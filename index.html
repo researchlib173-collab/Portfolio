@@ -2068,12 +2068,15 @@
                 const h = dt / steps;
                 const { nodes, previous, velocities, body } = sim;
 
-                // Natural organic harmonic breeze (never stops completely so it stays alive)
-                const windX = (Math.sin(time * 1.35) * 0.75 + Math.sin(time * 0.68 + 1.2) * 0.35) * physics.breeze * 3.8;
-                const windZ = (Math.cos(time * 1.1) * 0.65 + Math.sin(time * 0.48 + 0.8) * 0.3) * physics.breeze * 2.8;
-                const windTwist = Math.sin(time * 0.85) * 0.22 * physics.breeze;
-
                 const grab = sim.grab;
+
+                // Subtle, gentle harmonic ambient breathing sway when idle (very slow, smooth micro-drift)
+                // When unpressed, the card hangs peacefully under gravity rather than flapping chaotically
+                const ambientScale = (!grab && physics.breeze > 0) ? physics.breeze * 0.08 : 0;
+                const windX = (Math.sin(time * 0.7) * 0.5 + Math.sin(time * 0.32 + 0.9) * 0.25) * ambientScale;
+                const windZ = (Math.cos(time * 0.55) * 0.4 + Math.sin(time * 0.25 + 0.4) * 0.15) * ambientScale;
+                const windTwist = Math.sin(time * 0.4) * 0.03 * ambientScale;
+
                 const pin = scratch.pin;
                 const nodeDrag = Math.exp(-physics.nodeDrag * h);
                 const linearDrag = Math.exp(-physics.linearDrag * h);
@@ -2083,8 +2086,6 @@
                     for (let i = 1; i < JOINTS; i++) {
                         const v = velocities[i];
                         v.y -= physics.gravity * h;
-                        v.x += windX * h;
-                        v.z += windZ * h;
                         previous[i].copy(nodes[i]);
                         nodes[i].addScaledVector(v, h);
                     }
@@ -2115,18 +2116,14 @@
                         body.angular.addScaledVector(up, (physics.twist * (sim.turn - sim.twist) - physics.twistDamping * spin) * h);
                     }
 
-                    // Gravity & Ambient Momentum
+                    // Natural downward gravity
                     body.velocity.y -= physics.gravity * h;
-                    body.velocity.x += windX * 0.4 * h;
-                    body.velocity.z += windZ * 0.4 * h;
-                    body.angular.y += windTwist * 0.2 * h;
 
-                    // Hover cursor tug (makes moving cursor around stage gently sway the lanyard)
-                    if (pointerInput && pointerInput.hovering && !grab) {
-                        const tugX = (pointerInput.x * 0.85 - body.position.x) * 1.8;
-                        const tugZ = (-pointerInput.y * 0.55 - body.position.z) * 1.8;
-                        body.velocity.x += tugX * h;
-                        body.velocity.z += tugZ * h;
+                    // Subtle organic micro-sway on body only (no chaotic joint flapping or cursor tug)
+                    if (ambientScale > 0) {
+                        body.velocity.x += windX * h;
+                        body.velocity.z += windZ * h;
+                        body.angular.y += windTwist * h;
                     }
 
                     body.position.addScaledVector(body.velocity, h);
@@ -2156,8 +2153,8 @@
                         .addScaledVector(normal, across / (1 + physics.broadside * Math.abs(across) * h))
                         .multiplyScalar(linearDrag);
                     body.angular.multiplyScalar(angularDrag / (1 + physics.spinAir * body.angular.length() * h));
-                    if (body.velocity.lengthSq() > 3600) body.velocity.setLength(60);
-                    if (body.angular.lengthSq() > 1600) body.angular.setLength(40);
+                    if (body.velocity.lengthSq() > 900) body.velocity.setLength(30);
+                    if (body.angular.lengthSq() > 400) body.angular.setLength(20);
 
                     nodes[JOINTS].copy(body.hang).applyQuaternion(body.quaternion).add(body.position);
                     for (let i = 0; i < JOINTS; i++) sim.lengths[i] = nodes[i].distanceTo(nodes[i + 1]);
@@ -2185,9 +2182,9 @@
                     strapWidth: 0.65,
                     metal: 'silver',
                     gravity: 1.1,
-                    damping: 0.45,
-                    elasticity: 0.6,
-                    breeze: 0.55,
+                    damping: 0.65,
+                    elasticity: 0.45,
+                    breeze: 0.2,
                     interactive: true,
                     intro: true
                 }, options);
@@ -2485,19 +2482,19 @@
                         hold: weight * mix(2.2, 5.5, springy),
                         stiffness: weight * 10 * JOINTS,
                         spring: weight * mix(0.12, 0.42, springy) * JOINTS,
-                        bandDamping: weight * mix(0.25, 0.07, springy) * JOINTS,
-                        linearDrag: 0.22 * Math.pow(14, settle),
-                        angularDrag: 0.45 * Math.pow(10, settle),
-                        air: 0.12,
-                        broadside: 0.45,
-                        spinAir: 0.025,
-                        nodeDrag: 1.8,
-                        nodeAir: 0.18,
-                        twist: 28,
-                        twistDamping: 2.8,
+                        bandDamping: weight * mix(0.32, 0.1, springy) * JOINTS,
+                        linearDrag: 0.38 * Math.pow(14, settle),
+                        angularDrag: 0.75 * Math.pow(10, settle),
+                        air: 0.18,
+                        broadside: 0.6,
+                        spinAir: 0.04,
+                        nodeDrag: 2.2,
+                        nodeAir: 0.25,
+                        twist: 26,
+                        twistDamping: 4.2,
                         grip: 42,
-                        gripDamping: 6,
-                        breeze: clamp(config.breeze, 0.1, 1)
+                        gripDamping: 7,
+                        breeze: clamp(config.breeze, 0, 1)
                     };
                 };
 
@@ -2514,7 +2511,7 @@
                         placeHanging(sim, layout, false);
                     }
                     renderScene();
-                    // Always keep animating whenever visible so hanging lanyard stays naturally alive
+                    // Keep animating whenever visible so hanging lanyard stays naturally alive and stable
                     if (visible) raf = requestAnimationFrame(tick);
                 };
 
@@ -2540,8 +2537,18 @@
 
                 const pickCard = () => {
                     cardGroup.updateMatrixWorld(true);
-                    const hits = raycaster.intersectObjects([bodyMesh, frontMesh, backMesh], false);
-                    return hits[0] || null;
+                    const hits = raycaster.intersectObjects([bodyMesh, frontMesh, backMesh, band, clampMesh], false);
+                    if (hits && hits.length > 0) return hits[0];
+                    const ray = raycaster.ray;
+                    const closestPoint = new THREE.Vector3();
+                    ray.closestPointToPoint(sim.body.position, closestPoint);
+                    if (closestPoint.distanceTo(sim.body.position) < 1.4) {
+                        return {
+                            point: closestPoint,
+                            distance: camera.position.distanceTo(sim.body.position)
+                        };
+                    }
+                    return null;
                 };
 
                 const setCursor = value => {
@@ -2554,22 +2561,16 @@
                     const dir = isFlipped ? 1 : -1;
                     const body = sim.body;
                     body.angular.y += FLIP_SPIN * dir;
-                    body.velocity.x += 2.2 * dir;
-                    body.velocity.z += 1.4;
+                    body.velocity.x += 1.2 * dir;
+                    body.velocity.z += 0.8;
                     start();
                 };
 
                 const onPointerDown = event => {
                     if (!config.interactive || (event.button !== undefined && event.button > 0)) return;
                     toPointer(event);
-                    let hit = pickCard();
-                    if (!hit) {
-                        // Allow grabbing anywhere in the stage viewport
-                        hit = {
-                            point: sim.body.position.clone(),
-                            distance: camera.position.distanceTo(sim.body.position)
-                        };
-                    }
+                    const hit = pickCard();
+                    if (!hit) return; // Only grab when actually targeting the card or near it
                     sim.grab = {
                         local: hit.point.clone().sub(sim.body.position).applyQuaternion(sim.body.quaternion.clone().invert()),
                         rotation: sim.body.quaternion.clone(),
@@ -2593,9 +2594,8 @@
                         start();
                         return;
                     }
-                    hovering = true;
-                    pointerCoords.hovering = true;
-                    setCursor('grab');
+                    const hit = pickCard();
+                    setCursor(hit ? 'grab' : '');
                 };
 
                 const onPointerUp = event => {
@@ -2606,7 +2606,8 @@
                     }
                     press = null;
                     try { canvas.releasePointerCapture(event.pointerId); } catch (e) {}
-                    setCursor('grab');
+                    const hit = pickCard();
+                    setCursor(hit ? 'grab' : '');
                     start();
                 };
 
@@ -2614,7 +2615,9 @@
                 canvas.addEventListener('pointermove', onPointerMove);
                 canvas.addEventListener('pointerup', onPointerUp);
                 canvas.addEventListener('pointercancel', onPointerUp);
-                canvas.addEventListener('pointerenter', () => { pointerCoords.hovering = true; });
+                canvas.addEventListener('pointerenter', () => {
+                    pointerCoords.hovering = true;
+                });
                 canvas.addEventListener('pointerleave', () => {
                     pointerCoords.hovering = false;
                     setCursor('');
@@ -2668,9 +2671,9 @@
                     strapWidth: 0.65,
                     metal: 'silver',
                     gravity: 1.1,
-                    damping: 0.45,
-                    elasticity: 0.6,
-                    breeze: 0.55,
+                    damping: 0.65,
+                    elasticity: 0.45,
+                    breeze: 0.2,
                     interactive: true,
                     intro: true
                 });
@@ -2699,9 +2702,9 @@
                     strapWidth: 0.65,
                     metal: 'silver',
                     gravity: 1.1,
-                    damping: 0.45,
-                    elasticity: 0.6,
-                    breeze: 0.55,
+                    damping: 0.65,
+                    elasticity: 0.45,
+                    breeze: 0.2,
                     interactive: true,
                     intro: true
                 });
@@ -2730,9 +2733,9 @@
                     strapWidth: 0.65,
                     metal: 'silver',
                     gravity: 1.1,
-                    damping: 0.45,
-                    elasticity: 0.6,
-                    breeze: 0.55,
+                    damping: 0.65,
+                    elasticity: 0.45,
+                    breeze: 0.2,
                     interactive: true,
                     intro: true
                 });

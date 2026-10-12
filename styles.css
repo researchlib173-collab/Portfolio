@@ -8,6 +8,11 @@
     src: url('MonoRegular.ttf'); /* 2. The exact name of your downloaded font file */
     
 }
+@font-face {
+    font-family: 'Mono Regular';  /* 1. Give your font whatever nickname you want */
+    src: url('MonoRegular.ttf'); /* 2. The exact name of your downloaded font file */
+    
+}
 #about {
     /* 1. Points to your image file (or an online image URL) */
     background-image: url('me.jpeg');
@@ -30,7 +35,7 @@
     align-items: center;
     justify-content: flex-start;
     /* PADDING OF SECTION OVER THE BG IMAGE: Adjust top/bottom & left/right edge distance */
-    padding: 100px 8vw;
+    padding: 100px 50px 100px 0px;
     box-sizing: border-box;
     text-align: left;
 }
