@@ -2,11 +2,27 @@
 // Runs securely on Netlify backend and reads process.env.GEMINI_API_KEY
 
 exports.handler = async (event, context) => {
+    const headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Content-Type": "application/json"
+    };
+
+    // Handle browser CORS preflight requests
+    if (event.httpMethod === "OPTIONS") {
+        return {
+            statusCode: 204,
+            headers,
+            body: ""
+        };
+    }
+
     // Only accept POST requests
     if (event.httpMethod !== "POST") {
         return {
             statusCode: 405,
-            headers: { "Content-Type": "application/json" },
+            headers,
             body: JSON.stringify({ error: "Method Not Allowed" })
         };
     }
@@ -16,7 +32,7 @@ exports.handler = async (event, context) => {
         if (!apiKey) {
             return {
                 statusCode: 500,
-                headers: { "Content-Type": "application/json" },
+                headers,
                 body: JSON.stringify({ error: "GEMINI_API_KEY is not configured in Netlify Environment Variables" })
             };
         }
@@ -37,42 +53,55 @@ The visitor is currently viewing the "${sectionTitle}" section of the portfolio!
 Section Summary: ${sectionSummary}
 If the visitor asks about "this page", "here", "this section", "what am I looking at?", or refers to what is on the screen, give a curated, insightful answer directly explaining this active section!`;
 
-        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+        // Robust model waterfall: try gemini-3.5-flash first (fastest & highest availability), fallback to 3.7 and 3.8 if busy
+        const candidateModels = ["gemini-3.5-flash", "gemini-3.7-flash", "gemini-3.8-flash"];
+        let reply = null;
+        let lastError = null;
 
-        const response = await fetch(endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                contents: [{
-                    role: "user",
-                    parts: [{ text: `${systemContext}\n\nVisitor says: ${userPrompt}` }]
-                }]
-            })
-        });
+        for (const model of candidateModels) {
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey.trim())}`;
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{
+                            role: "user",
+                            parts: [{ text: `${systemContext}\n\nVisitor says: ${userPrompt}` }]
+                        }]
+                    })
+                });
 
-        if (!response.ok) {
-            const errText = await response.text();
+                if (response.ok) {
+                    const data = await response.json();
+                    reply = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || null;
+                    if (reply) break;
+                } else {
+                    lastError = await response.text();
+                }
+            } catch (modelErr) {
+                lastError = modelErr.message;
+            }
+        }
+
+        if (!reply) {
             return {
-                statusCode: response.status,
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ error: "Gemini API error", details: errText })
+                statusCode: 502,
+                headers,
+                body: JSON.stringify({ error: "Gemini models unavailable", details: lastError })
             };
         }
 
-        const data = await response.json();
-        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || null;
-
         return {
             statusCode: 200,
-            headers: { "Content-Type": "application/json" },
+            headers,
             body: JSON.stringify({ reply })
         };
     } catch (err) {
         return {
             statusCode: 500,
-            headers: { "Content-Type": "application/json" },
+            headers,
             body: JSON.stringify({ error: err.message })
         };
     }
 };
-

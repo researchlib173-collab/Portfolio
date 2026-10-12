@@ -4378,9 +4378,12 @@
                     if (res.ok) {
                         const data = await res.json();
                         if (data && data.reply) return data.reply.trim();
+                    } else {
+                        const errData = await res.json().catch(() => ({}));
+                        console.warn('Netlify Gemini function response:', res.status, errData);
                     }
                 } catch (netErr) {
-                    // Netlify function not available in local static preview; check direct fallback
+                    console.warn('Netlify function connection error:', netErr);
                 }
 
                 // 2. Direct client fallback if API key is manually provided
