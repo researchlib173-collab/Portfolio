@@ -4362,12 +4362,31 @@
             }
 
             async function generateReplyWithGemini(userPrompt) {
-                const apiKey = GEMINI_BACKEND_API_KEY.trim();
-                if (!apiKey) return null;
-
                 const sec = SECTIONS_METADATA[currentSectionKey] || SECTIONS_METADATA.about;
 
-                const systemContext = `You are the digital twin of Balaji, a gentle, young, intelligent B.Tech CSE (IoT) student at VNR VJIET Hyderabad.
+                // 1. Try secure Netlify serverless backend function first
+                try {
+                    const res = await fetch('/.netlify/functions/gemini', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            prompt: userPrompt,
+                            sectionTitle: sec.title,
+                            sectionSummary: sec.summary
+                        })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.reply) return data.reply.trim();
+                    }
+                } catch (netErr) {
+                    // Netlify function not available in local static preview; check direct fallback
+                }
+
+                // 2. Direct client fallback if API key is manually provided
+                const apiKey = GEMINI_BACKEND_API_KEY.trim();
+                if (apiKey) {
+                    const systemContext = `You are the digital twin of Balaji, a gentle, young, intelligent B.Tech CSE (IoT) student at VNR VJIET Hyderabad.
 You sit in the bottom-left corner of his portfolio website as an interactive pixel-art avatar (switching between leaning against the wall with arms crossed, playing acoustic guitar, coding on a beanbag, and cozying up in a blanket burrito).
 Personality: Gentle, warm, down-to-earth, witty, friendly even to rude/inappropriate questions (deflect them gently with humor).
 You can speak English and casual Telugu-English (Tenglish, e.g., "Em ledu bro", "Avunu", "Chala cool", "Enti visheshalu").
@@ -4378,26 +4397,28 @@ The visitor is currently viewing the "${sec.title}" section (#${sec.id}) of the 
 Section Summary: ${sec.summary}
 If the visitor asks about "this page", "here", "this section", "what am I looking at?", or refers to what is on the screen, give a curated, insightful answer directly explaining this active section!`;
 
-                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+                    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
 
-                try {
-                    const res = await fetch(endpoint, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{
-                                role: 'user',
-                                parts: [{ text: `${systemContext}\n\nVisitor says: ${userPrompt}` }]
-                            }]
-                        })
-                    });
-                    if (!res.ok) return null;
-                    const data = await res.json();
-                    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-                    return text ? text.trim() : null;
-                } catch (err) {
-                    return null;
+                    try {
+                        const res = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{
+                                    role: 'user',
+                                    parts: [{ text: `${systemContext}\n\nVisitor says: ${userPrompt}` }]
+                                }]
+                            })
+                        });
+                        if (res.ok) {
+                            const data = await res.json();
+                            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                            if (text) return text.trim();
+                        }
+                    } catch (err) {}
                 }
+
+                return null;
             }
 
             function getCuratedOfflineReply(text) {
