@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with Back Navigation and Section Quick-Nav -->
+    <header class="subpage-nav">
+        <span class="subpage-title">My Journey</span>
+        <div class="subpage-section-pills">
+            <a href="#beginning" class="subpage-pill">1. Education</a>
+            <a href="#milestones" class="subpage-pill">2. Milestones</a>
+            <a href="#heading" class="subpage-pill">3. Future Vision</a>
+        </div>
+        <a href="index.html#journey" class="back-btn">&larr; Back to Home</a>
+    </header>
+
+    <!-- Scroll Page 1 -->
+    <section class="subpage-section" id="beginning">
+        <h2>Page 1: The Beginning &amp; Education</h2>
+        <p>Blank Template &mdash; How your coding story started, early curiosity, and academic background.</p>
+    </section>
+
+    <!-- Scroll Page 2 -->
+    <section class="subpage-section" id="milestones">
+        <h2>Page 2: Projects &amp; Key Milestones</h2>
+        <p>Blank Template &mdash; Memorable breakthroughs, major projects built, and turning points in learning.</p>
+    </section>
+
+    <!-- Scroll Page 3 -->
+    <section class="subpage-section" id="heading">
+        <h2>Page 3: Where I Am Heading</h2>
+        <p>Blank Template &mdash; Current focus, upcoming targets, and long-term career aspirations.</p>
+    </section>
+
+    <!-- ScrollReveal Interstitial Transition to Achievements -->
+    <section class="next-section-transition" id="transition-to-achievements" data-target-url="achievements.html">
+        <div class="next-section-pin">
+            <span class="next-section-tag">NEXT CHAPTER &bull; CREDENTIALS</span>
+            <div class="scroll-reveal" data-reveal-text="Proof of Work: Course Credentials &amp; Certifications">
+                <p class="scroll-reveal-text"></p>
+            </div>
+            <div class="next-section-prompt">
+                <div class="transition-progress-bar">
+                    <div class="transition-progress-fill" id="trans-fill"></div>
+                </div>
+                <span class="next-section-hint">Transitioning to Achievements &bull; Please wait</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP & ScrollTrigger Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- React-Bits ScrollReveal Transition Engine -->
+    <script>
+        (function() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealContainers = document.querySelectorAll('.scroll-reveal');
+            revealContainers.forEach(container => {
+                const textEl = container.querySelector('.scroll-reveal-text');
+                const rawText = container.getAttribute('data-reveal-text') || textEl.textContent.trim();
+                if (!rawText) return;
+
+                textEl.innerHTML = '';
+                const words = rawText.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.match(/^\s+$/)) {
+                        textEl.appendChild(document.createTextNode(word));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word;
+                        textEl.appendChild(span);
+                    }
+                });
+
+                const section = container.closest('.next-section-transition');
+                const triggerTarget = section || container;
+
+                gsap.fromTo(container, 
+                    { transformOrigin: '0% 50%', rotate: 5 },
+                    {
+                        rotate: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 3. Staggered Word Opacity and Blur
+                const wordSpans = textEl.querySelectorAll('.word');
+                gsap.fromTo(wordSpans,
+                    { opacity: 0, filter: 'blur(10px)', willChange: 'opacity, filter' },
+                    {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 65%',
+                            end: 'bottom 40%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 4. Fully reveal -> Pause so user sees the complete effect -> Smoothly transition to next section
+                const targetUrl = section ? section.getAttribute('data-target-url') : null;
+                const fillBar = section ? section.querySelector('.transition-progress-fill') : null;
+                let timerTriggered = false;
+
+                if (targetUrl) {
+                    ScrollTrigger.create({
+                        trigger: triggerTarget,
+                        start: 'top 20%', // When user has scrolled into full view of the words
+                        onEnter: () => {
+                            if (!timerTriggered) {
+                                timerTriggered = true;
+                                if (fillBar) {
+                                    fillBar.style.transition = 'width 1.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                                    fillBar.style.width = '100%';
+                                }
+                                setTimeout(() => {
+                                    window.location.href = targetUrl;
+                                }, 1700); // 1.7s wait: lets user fully read and appreciate the revealed title
+                            }
+                        },
+                        onLeaveBack: () => {
+                            timerTriggered = false;
+                            if (fillBar) {
+                                fillBar.style.transition = 'none';
+                                fillBar.style.width = '0%';
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>
+

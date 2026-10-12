@@ -1,0 +1,19 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDE and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Stray reparse points
+html

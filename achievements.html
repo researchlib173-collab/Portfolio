@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Certifications &amp; Honors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with Back Navigation -->
+    <header class="subpage-nav">
+        <span class="subpage-title">Achievements</span>
+        <a href="index.html#achievements" class="back-btn">&larr; Back to Home</a>
+    </header>
+
+    <!-- Scroll Page 1: 3D Certificate Surfer Scene -->
+    <section class="surfer-container" id="cert-surfer">
+        <div class="surfer-viewport" id="surfer-viewport">
+            
+            <!-- UI Overlay: Top-Left Title -->
+            <div class="surfer-overlay-title">
+                <h1 class="surfer-heading-sub">COURSE CREDENTIALS</h1>
+                <h1 class="surfer-heading-main">
+                    COLLECTION<span class="surfer-count" id="surfer-count">(8)</span>
+                </h1>
+            </div>
+
+            <!-- Left Side Focused Details Display (As indicated in your sketch!) -->
+            <div class="surfer-focus-display" id="focus-display">
+                <span class="focus-badge" id="focus-badge">CERTIFICATE 01 / 04</span>
+                <h2 class="focus-title" id="focus-title">Advanced Python &amp; Data Architecture</h2>
+                <div class="focus-issuer" id="focus-issuer">Coursera / DeepLearning.AI &bull; 2024</div>
+                <p class="focus-desc" id="focus-desc">Comprehensive mastery of data structures, automation pipelines, and core programming paradigms.</p>
+                <!-- <div class="focus-action">
+                    <button class="focus-view-btn" id="focus-view-btn">View Certificate &rarr;</button>
+                </div> -->
+            </div>
+
+            <!-- UI Overlay: Bottom-Right Scroll Prompt -->
+            <div class="surfer-scroll-hint">
+                scroll to surf &darr; (click to zoom)
+            </div>
+
+            <!-- 3D Scene Viewport -->
+            <div class="surfer-scene">
+                <div class="surfer-track" id="surfer-track">
+                    <!-- Populated dynamically by JavaScript -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Zoom Modal for A4 Certificates -->
+    <div class="cert-modal" id="cert-modal" aria-hidden="true">
+        <div class="cert-modal-box">
+            <button class="cert-modal-close" id="modal-close" title="Close Zoom">&times;</button>
+            <img src="" alt="Certificate Zoomed View" class="cert-modal-img" id="modal-img">
+            <div class="cert-modal-caption">
+                <h4 id="modal-title">Certificate Title</h4>
+                <span id="modal-meta">Verified Credential</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Surfer Interactive Script -->
+    <script>
+        (function() {
+            // 1. Certificate Data
+            // YOU CAN PUT YOUR REAL CERTIFICATE IMAGES HERE! (e.g. "images/my-cert1.jpg")
+            const certificates = [
+                {
+                    id: 1,
+                    title: "Advanced Python & Data Architecture",
+                    issuer: "Coursera / DeepLearning.AI",
+                    date: "2024",
+                    description: "In-depth algorithms, list processing, automated scripting, and data manipulation.",
+                    image: "images/certificates/demo1.jpg"
+                },
+                {
+                    id: 2,
+                    title: "Java OOP & Multithreading Systems",
+                    issuer: "Oracle Certified Associate",
+                    date: "2024",
+                    description: "Object-oriented design patterns, multithreaded systems, concurrency, and robust backends.",
+                    image: "images/certificates/"
+                },
+                {
+                    id: 3,
+                    title: "Modern Web Systems & Full Stack",
+                    issuer: "Meta Professional Certification",
+                    date: "2024",
+                    description: "Frontend architecture, responsive layouts, asynchronous state, and production UI engineering.",
+                    image: "images/certificates/"
+                },
+                {
+                    id: 4,
+                    title: "Algorithms & Competitive Problem Solving",
+                    issuer: "HackerRank / LeetCode",
+                    date: "2023",
+                    description: "Dynamic programming, graph algorithms, asymptotic analysis, and data structures.",
+                    image: "images/certificates/"
+                },
+                {
+                    id: 5,
+                    title: "Database Engineering & SQL Architecture",
+                    issuer: "PostgreSQL & Database Systems",
+                    date: "2024",
+                    description: "Relational modeling, indexing, query optimization, ACID transactions, and schema normalization.",
+                    image: "images/certificates/"
+                },
+                {
+                    id: 6,
+                    title: "Cloud Infrastructure & AWS Fundamentals",
+                    issuer: "Amazon Web Services / Cloud Practitioner",
+                    date: "2024",
+                    description: "Cloud computing services, virtual networking, scalable storage buckets, and IAM security.",
+                    image: "images/certificates/"
+                },
+                {
+                    id: 7,
+                    title: "Deep Learning & Neural Network Foundations",
+                    issuer: "DeepLearning.AI / TensorFlow",
+                    date: "2023",
+                    description: "Artificial neural networks, backpropagation, convolutional layers, and predictive models.",
+                    image: "images/certificates/"
+                },
+                {
+                    id: 8,
+                    title: "Git, Linux & DevOps Automation",
+                    issuer: "Linux Foundation / GitHub",
+                    date: "2023",
+                    description: "Version control branching, automated workflows, bash scripting, and terminal server administration.",
+                    image: "images/certificates/"
+                }
+            ];
+
+            // Automatically set top collection counter to match list size
+            const collectionCountEl = document.getElementById('surfer-count');
+            if (collectionCountEl) {
+                collectionCountEl.textContent = `(${certificates.length})`;
+            }
+
+            // Duplicate array to create continuous surfing loop
+            const duplicated = [...certificates, ...certificates, ...certificates];
+
+            // 2. 3D Surfer Configuration
+            const stepX = 260;
+            const stepY = -80;
+            const stepZ = -300;
+            const scrollPerItem = 700;
+            const loopDistance = certificates.length * scrollPerItem;
+
+            const track = document.getElementById('surfer-track');
+            const container = document.getElementById('cert-surfer');
+            const viewport = document.getElementById('surfer-viewport');
+
+            // Left Side Focused Display Elements
+            const focusDisplay = document.getElementById('focus-display');
+            const focusBadge = document.getElementById('focus-badge');
+            const focusTitle = document.getElementById('focus-title');
+            const focusIssuer = document.getElementById('focus-issuer');
+            const focusDesc = document.getElementById('focus-desc');
+            const focusViewBtn = document.getElementById('focus-view-btn');
+
+            let currentActiveIndex = -1;
+
+            // Zoom Modal Elements
+            const modal = document.getElementById('cert-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMeta = document.getElementById('modal-meta');
+            const modalClose = document.getElementById('modal-close');
+
+            // Render Clean A4 Cards in 3D Track
+            duplicated.forEach((item, i) => {
+                const card = document.createElement('div');
+                card.className = 'surfer-card';
+                card.dataset.index = i;
+
+                card.innerHTML = `
+                    <div class="surfer-card-img-wrap">
+                        <img src="${item.image}" alt="${item.title}" class="surfer-card-img" onload="if(this.nextElementSibling) this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+                        <!-- Fallback preview when image is still loading or not added yet -->
+                        <div class="surfer-card-fallback">
+                            <span class="surfer-fallback-badge">A4 CERTIFICATE</span>
+                            <div class="surfer-fallback-title">${item.title}</div>
+                            <div class="surfer-fallback-issuer">${item.issuer} &bull; ${item.date}</div>
+                        </div>
+                    </div>
+                `;
+
+                // Click card to Zoom
+                card.addEventListener('click', () => {
+                    openZoomModal(item);
+                });
+
+                track.appendChild(card);
+            });
+
+            const cardElements = Array.from(track.children);
+
+            // Zoom Modal Logic
+            function openZoomModal(item) {
+                if (!modal) return;
+                if (modalImg) modalImg.src = item.image || '';
+                if (modalTitle) modalTitle.textContent = item.title || '';
+                if (modalMeta) modalMeta.textContent = `${item.issuer || ''} • ${item.date || ''}`;
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeZoomModal() {
+                if (!modal) return;
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+
+            if (modalClose) {
+                modalClose.addEventListener('click', closeZoomModal);
+            }
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeZoomModal();
+                });
+            }
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+                    closeZoomModal();
+                }
+            });
+
+            // Connect Left Side button to zoom current focused certificate (if button exists)
+            if (focusViewBtn) {
+                focusViewBtn.addEventListener('click', () => {
+                    if (currentActiveIndex >= 0 && certificates[currentActiveIndex]) {
+                        openZoomModal(certificates[currentActiveIndex]);
+                    }
+                });
+            }
+
+            // Update Left-Side Info with Smooth Fade
+            function updateFocusedDetails(index) {
+                if (currentActiveIndex === index) return;
+                currentActiveIndex = index;
+
+                if (focusDisplay) focusDisplay.classList.add('fading');
+
+                setTimeout(() => {
+                    const cert = certificates[index];
+                    if (!cert) return;
+
+                    if (focusBadge) {
+                        focusBadge.textContent = `CERTIFICATE ${String(index + 1).padStart(2, '0')} / ${String(certificates.length).padStart(2, '0')}`;
+                    }
+                    if (focusTitle) focusTitle.textContent = cert.title;
+                    if (focusIssuer) focusIssuer.innerHTML = `${cert.issuer} &bull; ${cert.date}`;
+                    if (focusDesc) focusDesc.textContent = cert.description;
+
+                    if (focusDisplay) focusDisplay.classList.remove('fading');
+                }, 180);
+            }
+
+            // 3. Motion & Animation Loop
+            let targetScroll = 0;
+            let currentScroll = 0;
+            let mouseX = -10000;
+            let mouseY = -10000;
+
+            viewport.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            viewport.addEventListener('mouseleave', () => {
+                mouseX = -10000;
+                mouseY = -10000;
+            });
+
+            function animate() {
+                const rect = container.getBoundingClientRect();
+                const containerTop = -rect.top;
+                targetScroll = Math.max(0, containerTop);
+
+                currentScroll += (targetScroll - currentScroll) * 0.08;
+
+                const loopedProgress = currentScroll % loopDistance;
+                const progressRatio = loopedProgress / loopDistance;
+
+                const sceneX = -certificates.length * stepX * progressRatio;
+                const sceneY = -certificates.length * stepY * progressRatio;
+                const sceneZ = -certificates.length * stepZ * progressRatio;
+
+                track.style.transform = `translate3d(${sceneX}px, ${sceneY}px, ${sceneZ}px)`;
+
+                // Active focal index in sequence
+                const focalIndexExact = (progressRatio * certificates.length);
+                const closestIntIndex = Math.round(focalIndexExact) % certificates.length;
+
+                updateFocusedDetails(closestIntIndex);
+
+                cardElements.forEach((card, i) => {
+                    const baseX = i * stepX;
+                    const baseY = i * stepY;
+                    const baseZ = i * stepZ;
+
+                    const cardIndexInLoop = i % certificates.length;
+                    let diffFromFocal = Math.abs(cardIndexInLoop - (focalIndexExact % certificates.length));
+                    if (diffFromFocal > certificates.length / 2) {
+                        diffFromFocal = certificates.length - diffFromFocal;
+                    }
+
+                    const isFocalRange = diffFromFocal < 0.6;
+                    let focusUplift = 0;
+                    let focusScale = 1.0;
+
+                    if (isFocalRange) {
+                        const intensity = 1 - (diffFromFocal / 0.6);
+                        focusUplift = -intensity * 80; // Elevated lift
+                        focusScale = 1.0 + intensity * 0.12;
+                        card.classList.add('is-focused');
+                    } else {
+                        card.classList.remove('is-focused');
+                    }
+
+                    let mouseUplift = 0;
+                    let mouseScale = 1.0;
+
+                    if (mouseX > -5000) {
+                        const cardRect = card.getBoundingClientRect();
+                        const centerX = cardRect.left + cardRect.width / 2;
+                        const centerY = cardRect.top + cardRect.height / 2;
+                        const dist = Math.hypot(mouseX - centerX, mouseY - centerY);
+
+                        if (dist < 380) {
+                            const factor = 1 - (dist / 380);
+                            mouseScale = 1 + factor * 0.2;
+                            mouseUplift = -factor * 25;
+                        }
+                    }
+
+                    const finalScale = focusScale * mouseScale;
+                    const finalY = baseY + focusUplift + mouseUplift;
+
+                    card.style.transform = `translate3d(${baseX}px, ${finalY}px, ${baseZ}px) rotateY(-50deg) scale(${finalScale})`;
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+        })();
+    </script>
+
+    <!-- ScrollReveal Interstitial Transition to Feedback -->
+    <section class="next-section-transition" id="transition-to-feedback" data-target-url="feedback.html">
+        <div class="next-section-pin">
+            <span class="next-section-tag">NEXT CHAPTER &bull; SOCIAL PROOF</span>
+            <div class="scroll-reveal" data-reveal-text="Peer Reviews: Words From Friends, Teammates &amp; Collaborators">
+                <p class="scroll-reveal-text"></p>
+            </div>
+            <div class="next-section-prompt">
+                <div class="transition-progress-bar">
+                    <div class="transition-progress-fill" id="trans-fill"></div>
+                </div>
+                <span class="next-section-hint">Transitioning to Feedback &amp; Reviews &bull; Please wait</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP & ScrollTrigger Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- React-Bits ScrollReveal Transition Engine -->
+    <script>
+        (function() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealContainers = document.querySelectorAll('.scroll-reveal');
+            revealContainers.forEach(container => {
+                const textEl = container.querySelector('.scroll-reveal-text');
+                const rawText = container.getAttribute('data-reveal-text') || textEl.textContent.trim();
+                if (!rawText) return;
+
+                textEl.innerHTML = '';
+                const words = rawText.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.match(/^\s+$/)) {
+                        textEl.appendChild(document.createTextNode(word));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word;
+                        textEl.appendChild(span);
+                    }
+                });
+
+                const section = container.closest('.next-section-transition');
+                const triggerTarget = section || container;
+
+                gsap.fromTo(container, 
+                    { transformOrigin: '0% 50%', rotate: 5 },
+                    {
+                        rotate: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 3. Staggered Word Opacity and Blur
+                const wordSpans = textEl.querySelectorAll('.word');
+                gsap.fromTo(wordSpans,
+                    { opacity: 0, filter: 'blur(10px)', willChange: 'opacity, filter' },
+                    {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 65%',
+                            end: 'bottom 40%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 4. Fully reveal -> Pause so user sees the complete effect -> Smoothly transition to next section
+                const targetUrl = section ? section.getAttribute('data-target-url') : null;
+                const fillBar = section ? section.querySelector('.transition-progress-fill') : null;
+                let timerTriggered = false;
+
+                if (targetUrl) {
+                    ScrollTrigger.create({
+                        trigger: triggerTarget,
+                        start: 'top 20%', // When user has scrolled into full view of the words
+                        onEnter: () => {
+                            if (!timerTriggered) {
+                                timerTriggered = true;
+                                if (fillBar) {
+                                    fillBar.style.transition = 'width 1.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                                    fillBar.style.width = '100%';
+                                }
+                                setTimeout(() => {
+                                    window.location.href = targetUrl;
+                                }, 1700); // 1.7s wait: lets user fully read and appreciate the revealed title
+                            }
+                        },
+                        onLeaveBack: () => {
+                            timerTriggered = false;
+                            if (fillBar) {
+                                fillBar.style.transition = 'none';
+                                fillBar.style.width = '0%';
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

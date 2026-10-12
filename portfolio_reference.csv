@@ -1,0 +1,50 @@
+File Name,Section Name / Topic,HTML Element ID,CSS Class Name(s),Associated Image / Media Path,Description & Customization Notes
+index.html,Navbar,N/A,".navbar, .nav-links",N/A,Sticky top navigation bar. Font: 'Courier New'. Hover color: #db722c.
+index.html,About Me,#about,.section-content,me.jpeg,Landing hero section with personal background photo and greeting headline.
+index.html,Skills (Abstract),#skills,".section-content, .abstract-btn",N/A,Abstract overview card. Button redirects to skills.html.
+index.html,Interests (Abstract),#interests,".section-content, .abstract-btn",N/A,Abstract overview card. Button redirects to interests.html.
+index.html,Journey (Abstract),#journey,".section-content, .abstract-btn",N/A,Abstract overview card. Button redirects to journey.html.
+index.html,Achievements (Abstract),#achievements,".section-content, .abstract-btn",N/A,Abstract overview card. Button redirects to achievements.html.
+index.html,Feedback (Abstract),#feedback,".section-content, .abstract-btn",N/A,Abstract overview card. Button redirects to feedback.html.
+index.html,Profiles & Contact (Abstract),#contact,".section-content, .abstract-btn",N/A,Abstract overview card. Button redirects to profiles-contact.html.
+skills.html,Subpage Navigation Bar,N/A,".subpage-nav, .subpage-title, .back-btn",N/A,Top sticky header with back button returning to index.html#skills.
+skills.html,Languages Strips (Page 1),#skills,".skills-container, .skill-card","images/c.jpg (C), images/python.jpg (Python), images/java-bg.jpg (Java)",8-column interactive accordion panels. Hovering expands card width (flex: 5).
+skills.html,Language Strip: C,N/A,".skill-card, .skill-C, .skill-content",images/c.jpg,First vertical strip. Title: C. Description: Core system fundamentals.
+skills.html,Language Strip: Python,N/A,".skill-card, .skill-python, .skill-content",images/python.jpg,Second vertical strip. Title: Python. Description: Data & automation.
+skills.html,Language Strip: Java,N/A,".skill-card, .skill-java, .skill-content",images/java-bg.jpg,Third vertical strip. Title: Java. Description: Multithreading & OOP.
+skills.html,Language Strip: C++,N/A,".skill-card, .skill-content",N/A (Color fallback),Fourth vertical strip. Placeholder for C++ & algorithms.
+skills.html,Language Strip: JavaScript,N/A,".skill-card, .skill-content",N/A (Color fallback),Fifth vertical strip. Placeholder for JS & DOM manipulation.
+skills.html,Language Strip: Databases,N/A,".skill-card, .skill-content",N/A (Color fallback),"Sixth vertical strip. Placeholder for SQL, schema & relations."
+skills.html,Language Strip: Web Tech,N/A,".skill-card, .skill-content",N/A (Color fallback),Seventh vertical strip. Placeholder for HTML5 & CSS3.
+skills.html,Language Strip: Git & Linux,N/A,".skill-card, .skill-content",N/A (Color fallback),Eighth vertical strip. Placeholder for Git & shell workflow.
+skills.html,Word & PowerPoint Showcase (Page 2),#office-skills,".office-skills-section, .office-container, .office-text-side, .office-collage-side",N/A,"Split screen: Tailwind-style typography on left, 3-card collage on right."
+skills.html,Word & PPT: Typography Left,N/A,".office-tag, .office-hero-title, .office-description, .badge",N/A,"Tag, bold headline, custom text description, and badge chips."
+skills.html,Word & PPT: Screenshot 1,N/A,".collage-card, .card-word, .card-caption",images/word-sample.jpg,Word document screenshot card. Tilted -3deg. Expands on hover.
+skills.html,Word & PPT: Screenshot 2,N/A,".collage-card, .card-ppt-top, .card-caption",images/ppt-sample1.jpg,PowerPoint slide deck card. Tilted +4deg. Expands on hover.
+skills.html,Word & PPT: Screenshot 3,N/A,".collage-card, .card-ppt-bottom, .card-caption",images/ppt-sample2.jpg,Draw.io / visuals slide card. Front layer. Expands on hover.
+skills.html,Google Search Operators (Page 3),#search-skills,".search-skills-section, .office-container, .office-text-side, .office-collage-side",N/A,"Split screen: Search operator typography on left, 3-card collage on right."
+skills.html,Search Operators: Typography Left,N/A,".office-tag, .office-hero-title, .office-description, .badge",N/A,"Tag, bold headline, description of site:, filetype:, intitle:, badges."
+skills.html,Search Operators: Screenshot 1,N/A,".collage-card, .card-search-1, .card-caption",images/search-sample1.jpg,First search operator screenshot card. Tilted +3deg.
+skills.html,Search Operators: Screenshot 2,N/A,".collage-card, .card-search-2, .card-caption",images/search-sample2.jpg,Second search operator screenshot card. Tilted -4deg.
+skills.html,Search Operators: Screenshot 3,N/A,".collage-card, .card-search-3, .card-caption",images/search-sample3.jpg,Third search operator screenshot card. Front layer.
+interests.html,Interests Subpage Navigation,N/A,".subpage-nav, .subpage-title, .back-btn",N/A,Top header with back button returning to index.html#interests.
+interests.html,Page 1: Tech Passions,N/A,.subpage-section,N/A,100vh full-height section. Add coding/AI/architecture interests.
+interests.html,Page 2: Creative Hobbies,N/A,.subpage-section,N/A,"100vh full-height section. Add music, reading, design, photography."
+interests.html,Page 3: Future Curiosity,N/A,.subpage-section,N/A,100vh full-height section. Add emerging tech and exploration goals.
+journey.html,Journey Subpage Navigation,N/A,".subpage-nav, .subpage-title, .back-btn",N/A,Top header with back button returning to index.html#journey.
+journey.html,Page 1: The Beginning & Education,N/A,.subpage-section,N/A,100vh full-height section. Early curiosity and academic journey.
+journey.html,Page 2: Projects & Milestones,N/A,.subpage-section,N/A,100vh full-height section. Breakthrough projects and lessons learned.
+journey.html,Page 3: Future Direction,N/A,.subpage-section,N/A,100vh full-height section. Career trajectory and upcoming milestones.
+achievements.html,Achievements Subpage Navigation,N/A,".subpage-nav, .subpage-title, .back-btn",N/A,Top header with back button returning to index.html#achievements.
+achievements.html,Page 1: Contests & Hackathons,N/A,.subpage-section,N/A,100vh full-height section. Competitive events and hackathon wins.
+achievements.html,Page 2: Badges & Credentials,N/A,.subpage-section,N/A,"100vh full-height section. Certifications, course completions, platform badges."
+achievements.html,Page 3: Honors & Recognition,N/A,.subpage-section,N/A,"100vh full-height section. Awards, community leadership, and peer recognition."
+feedback.html,Feedback Subpage Navigation,N/A,".subpage-nav, .subpage-title, .back-btn",N/A,Top header with back button returning to index.html#feedback.
+feedback.html,Page 1: Peer & Mentor Reviews,N/A,.subpage-section,N/A,100vh full-height section. Quotes and recommendations from teammates.
+feedback.html,Page 2: Review Form / Comment Area,N/A,.subpage-section,N/A,100vh full-height section. Interactive contact or testimonial input form.
+feedback.html,Page 3: Key Growth Takeaways,N/A,.subpage-section,N/A,100vh full-height section. How feedback drives personal improvement.
+profiles-contact.html,Profiles Subpage Navigation,N/A,".subpage-nav, .subpage-title, .back-btn",N/A,Top header with back button returning to index.html#contact.
+profiles-contact.html,Page 1: Developer Profiles,N/A,.subpage-section,N/A,"100vh full-height section. GitHub, LeetCode, Codeforces, HackerRank links."
+profiles-contact.html,Page 2: Social & Professional,N/A,.subpage-section,N/A,"100vh full-height section. LinkedIn, Twitter/X, resume download button."
+profiles-contact.html,Page 3: Direct Messaging / Contact,N/A,.subpage-section,N/A,100vh full-height section. Direct email address and reach-out form.
+styles.css,Global Theme Variables,N/A,"body, *, html",me.jpeg,Primary Font: 'OCR A Extended'. Nav Font: 'Courier New'. Accent: #db722c. BG: #000000.

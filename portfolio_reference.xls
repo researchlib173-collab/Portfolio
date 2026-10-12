@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Segoe UI" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="HeaderStyle">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2" ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="12" ss:Color="#FFFFFF" ss:Bold="1"/>
+   <Interior ss:Color="#DB722C" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="RowEven">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E0E0E0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#1A1A1A"/>
+   <Interior ss:Color="#F9FAFB" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="RowOdd">
+   <Alignment ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E0E0E0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#1A1A1A"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="HighlightID">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Courier New" ss:Size="10" ss:Color="#C05621" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="HighlightClass">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Courier New" ss:Size="10" ss:Color="#2B6CB0"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Portfolio Map">
+  <Table ss:DefaultRowHeight="26">
+   <Column ss:Width="120"/>
+   <Column ss:Width="190"/>
+   <Column ss:Width="110"/>
+   <Column ss:Width="210"/>
+   <Column ss:Width="190"/>
+   <Column ss:Width="360"/>
+   <Row ss:Height="32">
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">File Name</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Section / Component</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">HTML Element ID</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">CSS Class Name(s)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Image / Media Path</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Customization &amp; Quick Notes</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Navbar</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.navbar, .nav-links</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Sticky top navbar. Font: 'Courier New'. Hover color: #db722c.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">About Me</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#about</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content</Data></Cell>
+    <Cell><Data ss:Type="String">me.jpeg</Data></Cell>
+    <Cell><Data ss:Type="String">Hero section with background photo and introduction text.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Skills (Abstract)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#skills</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract card. Button redirects to skills.html.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Interests (Abstract)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#interests</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract card. Button redirects to interests.html.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Journey (Abstract)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#journey</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract card. Button redirects to journey.html.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Achievements (Abstract)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#achievements</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract card. Button redirects to achievements.html.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Feedback (Abstract)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#feedback</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract card. Button redirects to feedback.html.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">index.html</Data></Cell>
+    <Cell><Data ss:Type="String">Profiles &amp; Contact (Abstract)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#contact</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.section-content, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Abstract card. Button redirects to profiles-contact.html.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Page 1: 8-Column Language Strips</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#skills</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.skills-container, .skill-card</Data></Cell>
+    <Cell><Data ss:Type="String">images/c.jpg, python.jpg, java-bg.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">Accordion strips. Hover expands card to flex: 5 for images and text.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Page 2: Word &amp; PowerPoint Showcase</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#office-skills</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.office-skills-section, .office-container</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Split layout. Typography on left, collage cards on right.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Word &amp; PPT: Screenshot 1 (Word)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.collage-card, .card-word</Data></Cell>
+    <Cell><Data ss:Type="String">images/word-sample.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">Word screenshot card (tilted -3deg). Straightens on hover.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Word &amp; PPT: Screenshot 2 (PPT)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.collage-card, .card-ppt-top</Data></Cell>
+    <Cell><Data ss:Type="String">images/ppt-sample1.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">PowerPoint slide screenshot card (tilted +4deg).</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Word &amp; PPT: Screenshot 3 (Draw.io)</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.collage-card, .card-ppt-bottom</Data></Cell>
+    <Cell><Data ss:Type="String">images/ppt-sample2.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">Draw.io / visuals slide card (front layer).</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Page 3: Google Search Operators</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">#search-skills</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.search-skills-section, .office-container</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Split layout. Search operator headline &amp; badges on left, collage on right.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Search Operators: Screenshot 1</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.collage-card, .card-search-1</Data></Cell>
+    <Cell><Data ss:Type="String">images/search-sample1.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">site: &amp; filetype: query screenshot card.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Search Operators: Screenshot 2</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.collage-card, .card-search-2</Data></Cell>
+    <Cell><Data ss:Type="String">images/search-sample2.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">intitle: query screenshot card.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">skills.html</Data></Cell>
+    <Cell><Data ss:Type="String">Search Operators: Screenshot 3</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.collage-card, .card-search-3</Data></Cell>
+    <Cell><Data ss:Type="String">images/search-sample3.jpg</Data></Cell>
+    <Cell><Data ss:Type="String">Boolean search results screenshot card.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">interests.html</Data></Cell>
+    <Cell><Data ss:Type="String">Pages 1, 2, 3</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.subpage-section, .subpage-nav</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Three full-height scroll pages for tech passions, hobbies &amp; curiosity.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">journey.html</Data></Cell>
+    <Cell><Data ss:Type="String">Pages 1, 2, 3</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.subpage-section, .subpage-nav</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Three full-height scroll pages for education, milestones &amp; vision.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">achievements.html</Data></Cell>
+    <Cell><Data ss:Type="String">Pages 1, 2, 3</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.subpage-section, .subpage-nav</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Three full-height scroll pages for contests, credentials &amp; honors.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">feedback.html</Data></Cell>
+    <Cell><Data ss:Type="String">Pages 1, 2, 3</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.subpage-section, .subpage-nav</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Three full-height scroll pages for testimonials, review form &amp; takeaways.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowEven">
+    <Cell><Data ss:Type="String">profiles-contact.html</Data></Cell>
+    <Cell><Data ss:Type="String">Pages 1, 2, 3</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">.subpage-section, .subpage-nav</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Three full-height scroll pages for developer profiles, socials &amp; contact.</Data></Cell>
+   </Row>
+   <Row ss:StyleID="RowOdd">
+    <Cell><Data ss:Type="String">styles.css</Data></Cell>
+    <Cell><Data ss:Type="String">Global Theme Variables</Data></Cell>
+    <Cell ss:StyleID="HighlightID"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:StyleID="HighlightClass"><Data ss:Type="String">body, navbar, .abstract-btn</Data></Cell>
+    <Cell><Data ss:Type="String">me.jpeg</Data></Cell>
+    <Cell><Data ss:Type="String">Primary Font: OCR A Extended. Nav Font: Courier New. Accent: #db722c.</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
+

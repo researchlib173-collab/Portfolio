@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback &amp; Peer Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="feedback-page-body">
+
+    <!-- Header with Back Navigation and Section Quick-Nav -->
+    <header class="subpage-nav">
+        <span class="subpage-title">Feedback &amp; Testimonials</span>
+        <div class="subpage-section-pills">
+            <a href="#split-scroll-section" class="subpage-pill">1. Reviews Split</a>
+            <a href="#leave-feedback" class="subpage-pill">2. Leave Note</a>
+        </div>
+        <a href="index.html#feedback" class="back-btn">&larr; Back to Home</a>
+    </header>
+
+    <!-- Scroll-Split-Card Main Section -->
+    <section class="split-scroll-section" id="split-scroll-section">
+        <div class="split-sticky-viewport">
+
+            <!-- Intro / Section Tag -->
+            <div class="split-intro-header">
+                <span class="split-tag">PEER REVIEWS &bull; ARCHIVE</span>
+                <h1 class="split-heading">Words From Friends &amp; Teammates</h1>
+                <p class="split-subtext">Scroll down to split the image into 3 panels and reveal peer reflections.</p>
+            </div>
+
+            <!-- 3-Panel Split Card Stage -->
+            <div class="split-stage" id="split-stage">
+
+                <!-- Panel 1 (Left Slice) -->
+                <div class="split-panel-slot slot-left" data-index="0">
+                    <div class="split-panel-inner" id="panel-inner-0">
+                        <!-- Front Face: Image slice 1/3 (0% to 33.333%) -->
+                        <div class="split-face split-face-front">
+                            <div class="split-img-slice" style="--slice-offset: 0%;"></div>
+                            <span class="slice-bracket bracket-left">[ 01 ]</span>
+                        </div>
+                        <!-- Back Face: Review Card 1 -->
+                        <div class="split-face split-face-back" style="background-color: #161822; color: #ffffff; border-color: rgba(219, 114, 44, 0.4);">
+                            <div class="panel-review-badge">COLLABORATOR</div>
+                            <h3 class="panel-review-title">Rapid Problem Solver</h3>
+                            <p class="panel-review-desc">
+                                "Always the first to dive into complex algorithmic blockers during our late-night project jams. He breaks down tough problems into clean, modular pieces effortlessly."
+                            </p>
+                            <div class="panel-author-row">
+                                <span class="panel-author-name">Arun Kumar</span>
+                                <span class="panel-author-role">Project Partner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2 (Center Slice) -->
+                <div class="split-panel-slot slot-center" data-index="1">
+                    <div class="split-panel-inner" id="panel-inner-1">
+                        <!-- Front Face: Image slice 2/3 (33.333% to 66.666%) -->
+                        <div class="split-face split-face-front">
+                            <div class="split-img-slice" style="--slice-offset: -100%;"></div>
+                            <span class="slice-bracket bracket-center">[ 02 ]</span>
+                        </div>
+                        <!-- Back Face: Review Card 2 -->
+                        <div class="split-face split-face-back" style="background-color: #db722c; color: #000000; border-color: rgba(255, 255, 255, 0.6);">
+                            <div class="panel-review-badge" style="background: rgba(0, 0, 0, 0.2); color: #000000; border-color: rgba(0,0,0,0.3);">CREATIVE DRIVE</div>
+                            <h3 class="panel-review-title" style="color: #000000;">Vintage &amp; Tech Enthusiast</h3>
+                            <p class="panel-review-desc" style="color: #111111;">
+                                "His fascination with retro computing, vintage lectures, and first principles brings a totally unique perspective to modern web projects. Relentlessly curious."
+                            </p>
+                            <div class="panel-author-row">
+                                <span class="panel-author-name" style="color: #000000;">Devin Reed</span>
+                                <span class="panel-author-role" style="color: #222222;">Classmate &bull; Hackathon Teammate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3 (Right Slice) -->
+                <div class="split-panel-slot slot-right" data-index="2">
+                    <div class="split-panel-inner" id="panel-inner-2">
+                        <!-- Front Face: Image slice 3/3 (66.666% to 100%) -->
+                        <div class="split-face split-face-front">
+                            <div class="split-img-slice" style="--slice-offset: -200%;"></div>
+                            <span class="slice-bracket bracket-right">[ 03 ]</span>
+                        </div>
+                        <!-- Back Face: Review Card 3 -->
+                        <div class="split-face split-face-back" style="background-color: #0e0f14; color: #ffffff; border-color: rgba(255, 255, 255, 0.15);">
+                            <div class="panel-review-badge">RELIABILITY</div>
+                            <h3 class="panel-review-title">Never Quits on Bugs</h3>
+                            <p class="panel-review-desc">
+                                "Whether it's debugging low-level memory leaks, fine-tuning CSS physics, or organizing technical documentation, you can always rely on his sharp eye for detail."
+                            </p>
+                            <div class="panel-author-row">
+                                <span class="panel-author-name">Siddharth Rao</span>
+                                <span class="panel-author-role">Study Group Peer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Progress Indicators -->
+            <div class="split-footer-bar">
+                <span class="split-stage-indicator" id="split-indicator">PHASE 1 / 3 &bull; UNITED HERO IMAGE</span>
+                <span class="split-scroll-prompt">SCROLL DOWN TO FLIP CARDS &darr;</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Additional Interactive Review Section: Leave a Note / Feedback -->
+    <section class="subpage-section feedback-submission-section" id="leave-feedback">
+        <div class="feedback-form-box">
+            <span class="interest-tag">peer-community / public-notes</span>
+            <h2>Leave a Thought or Review</h2>
+            <p>
+                Have you worked with me on a project, hackathon, or study session? Drop a quick note or feedback below!
+            </p>
+            <form class="peer-review-form" onsubmit="event.preventDefault(); alert('Thank you for the note! Your message has been saved.');">
+                <div class="form-row">
+                    <input type="text" class="review-input" placeholder="Your Name or Nickname" required>
+                    <input type="text" class="review-input" placeholder="Context (e.g. Hackathon Teammate, Friend)">
+                </div>
+                <textarea class="review-textarea" rows="4" placeholder="Your comments, observations, or words of encouragement..." required></textarea>
+                <button type="submit" class="abstract-btn" style="margin-top: 15px; cursor: pointer;">Submit Peer Review &rarr;</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Scroll-Split-Card Animation Script (Pure Vanilla JS RAF Physics) -->
+    <script>
+        (function() {
+            const section = document.getElementById('split-scroll-section');
+            const panel0 = document.getElementById('panel-inner-0');
+            const panel1 = document.getElementById('panel-inner-1');
+            const panel2 = document.getElementById('panel-inner-2');
+            const slot0 = document.querySelector('.slot-left');
+            const slot1 = document.querySelector('.slot-center');
+            const slot2 = document.querySelector('.slot-right');
+            const indicator = document.getElementById('split-indicator');
+
+            if (!section || !panel0 || !panel1 || !panel2) return;
+
+            let ticking = false;
+
+            function updateSplitPhysics() {
+                ticking = false;
+                const rect = section.getBoundingClientRect();
+                const totalScrollable = section.offsetHeight - window.innerHeight;
+                if (totalScrollable <= 0) return;
+
+                const scrolled = -rect.top;
+                // scrollProgress goes from 0.0 to 1.0
+                const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
+
+                // --- PHASE 1: Separation / Split (progress 0.00 -> 0.35) ---
+                // Outer panels spread apart horizontally:
+                // Left moves -34px to -42px, Right moves +34px to +42px, Center stays centered.
+                const splitRatio = Math.min(progress / 0.30, 1);
+                // Ease out cubic
+                const splitEase = 1 - Math.pow(1 - splitRatio, 3);
+                const gapOffset = splitEase * 38; // px
+
+                if (slot0) slot0.style.transform = `translateX(-${gapOffset}px)`;
+                if (slot2) slot2.style.transform = `translateX(${gapOffset}px)`;
+
+                // --- PHASE 2: 3D Flip Rotation to reveal Back Cards (progress 0.28 -> 0.95) ---
+                // Staggered Y-axis 3D flips:
+                // Panel 0 flips from 0.25 -> 0.58
+                // Panel 1 flips from 0.42 -> 0.75
+                // Panel 2 flips from 0.58 -> 0.92
+                const p0Flip = Math.min(Math.max((progress - 0.22) / 0.32, 0), 1);
+                const p1Flip = Math.min(Math.max((progress - 0.38) / 0.32, 0), 1);
+                const p2Flip = Math.min(Math.max((progress - 0.54) / 0.32, 0), 1);
+
+                // Easing function for smooth 3D flip
+                function flipEase(t) {
+                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                }
+
+                const deg0 = flipEase(p0Flip) * 180;
+                const deg1 = flipEase(p1Flip) * 180;
+                const deg2 = flipEase(p2Flip) * 180;
+
+                panel0.style.transform = `rotateY(${deg0}deg)`;
+                panel1.style.transform = `rotateY(${deg1}deg)`;
+                panel2.style.transform = `rotateY(${deg2}deg)`;
+
+                // Dynamic Status Badge
+                if (indicator) {
+                    if (progress < 0.22) {
+                        indicator.innerText = "PHASE 1 / 3 \u2022 UNITED HERO IMAGE";
+                        indicator.style.color = "#94a3b8";
+                    } else if (progress < 0.70) {
+                        indicator.innerText = "PHASE 2 / 3 \u2022 CARDS SEPARATING & FLIPPING";
+                        indicator.style.color = "#db722c";
+                    } else {
+                        indicator.innerText = "PHASE 3 / 3 \u2022 ALL 3 PEER REVIEWS REVEALED";
+                        indicator.style.color = "#4ade80";
+                    }
+                }
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateSplitPhysics);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateSplitPhysics);
+            updateSplitPhysics();
+        })();
+    </script>
+
+    <!-- ScrollReveal Interstitial Transition to Profiles & Contact -->
+    <section class="next-section-transition" id="transition-to-profiles" data-target-url="profiles-contact.html">
+        <div class="next-section-pin">
+            <span class="next-section-tag">NEXT CHAPTER &bull; CONNECT</span>
+            <div class="scroll-reveal" data-reveal-text="Developer Profiles, Competitive Platforms &amp; Get In Touch">
+                <p class="scroll-reveal-text"></p>
+            </div>
+            <div class="next-section-prompt">
+                <div class="transition-progress-bar">
+                    <div class="transition-progress-fill" id="trans-fill"></div>
+                </div>
+                <span class="next-section-hint">Transitioning to Profiles &amp; Contact &bull; Please wait</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP & ScrollTrigger Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- React-Bits ScrollReveal Transition Engine -->
+    <script>
+        (function() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealContainers = document.querySelectorAll('.scroll-reveal');
+            revealContainers.forEach(container => {
+                const textEl = container.querySelector('.scroll-reveal-text');
+                const rawText = container.getAttribute('data-reveal-text') || textEl.textContent.trim();
+                if (!rawText) return;
+
+                textEl.innerHTML = '';
+                const words = rawText.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.match(/^\s+$/)) {
+                        textEl.appendChild(document.createTextNode(word));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word;
+                        textEl.appendChild(span);
+                    }
+                });
+
+                const section = container.closest('.next-section-transition');
+                const triggerTarget = section || container;
+
+                gsap.fromTo(container, 
+                    { transformOrigin: '0% 50%', rotate: 5 },
+                    {
+                        rotate: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 3. Staggered Word Opacity and Blur
+                const wordSpans = textEl.querySelectorAll('.word');
+                gsap.fromTo(wordSpans,
+                    { opacity: 0, filter: 'blur(10px)', willChange: 'opacity, filter' },
+                    {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 65%',
+                            end: 'bottom 40%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 4. Fully reveal -> Pause so user sees the complete effect -> Smoothly transition to next section
+                const targetUrl = section ? section.getAttribute('data-target-url') : null;
+                const fillBar = section ? section.querySelector('.transition-progress-fill') : null;
+                let timerTriggered = false;
+
+                if (targetUrl) {
+                    ScrollTrigger.create({
+                        trigger: triggerTarget,
+                        start: 'top 20%', // When user has scrolled into full view of the words
+                        onEnter: () => {
+                            if (!timerTriggered) {
+                                timerTriggered = true;
+                                if (fillBar) {
+                                    fillBar.style.transition = 'width 1.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                                    fillBar.style.width = '100%';
+                                }
+                                setTimeout(() => {
+                                    window.location.href = targetUrl;
+                                }, 1700); // 1.7s wait: lets user fully read and appreciate the revealed title
+                            }
+                        },
+                        onLeaveBack: () => {
+                            timerTriggered = false;
+                            if (fillBar) {
+                                fillBar.style.transition = 'none';
+                                fillBar.style.width = '0%';
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

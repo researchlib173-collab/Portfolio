@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interests - Passions &amp; Curiosities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with Back Navigation and Section Quick-Nav -->
+    <header class="subpage-nav">
+        <span class="subpage-title">My Interests</span>
+        <div class="subpage-section-pills">
+            <a href="#math" class="subpage-pill">1. Math</a>
+            <a href="#vintage-lectures" class="subpage-pill">2. Lectures</a>
+            <a href="#space-retro-tech" class="subpage-pill">3. Space</a>
+            <a href="#research" class="subpage-pill">4. Research</a>
+            <a href="#ww2-tech" class="subpage-pill">5. WW2</a>
+            <a href="#photography" class="subpage-pill">6. Photos</a>
+        </div>
+        <a href="index.html#interests" class="back-btn">&larr; Back to Home</a>
+    </header>
+
+    <!-- Page 1: Math -->
+    <section class="subpage-section" id="math">
+        <div class="math-glass-box">
+            <span class="math-tag">pure-mathematics / discrete-structures / logic</span>
+            <h2 class="math-title">1. Math</h2>
+            <p class="math-desc">
+                Exploring fundamental patterns, proofs, discrete structures, and mathematical thinking. Finding the beauty in linear algebra, calculus, and algorithms that underpin all of computing.
+            </p>
+            <div class="interest-tags-row">
+                <span class="math-pill">Linear Algebra</span>
+                <span class="math-pill">Calculus</span>
+                <span class="math-pill">Discrete Mathematics</span>
+                <span class="math-pill">Proofs &amp; Logic</span>
+                <span class="math-pill">Number Theory</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Vintage Lectures (3D Spiral Ladder with Scroll Pinning) -->
+    <section class="spiral-section" id="vintage-lectures">
+        <div class="spiral-sticky-viewport" id="spiral-viewport">
+            <!-- Floating UI Title Overlay -->
+            <div class="spiral-overlay">
+                <span class="spiral-tag">classic-archives / historic-pedagogy / timeless-minds</span>
+                <h2 class="spiral-title">2. Vintage Lectures</h2>
+                <p class="spiral-desc">
+                    Rediscovering classic university archives and golden-era talks. Scroll through all lectures to unlock the next section.
+                </p>
+            </div>
+
+            <!-- 3D WebGL Canvas Container -->
+            <div id="spiral-canvas-wrap"></div>
+
+            <!-- Instruction Prompt at Bottom with Live Progress -->
+            <div class="spiral-instructions" id="spiral-instructions">
+                Scroll to explore all lectures (1 / 8) &bull; <img src="images/Logo/Logo_of_YouTube_(2013-2015).svg.webp" alt="YouTube" style="width: 16px; height: 11px; vertical-align: middle; margin-right: 4px; display: inline-block;">Click to open YouTube
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Space and Retro tech -->
+    <section class="subpage-section" id="space-retro-tech">
+        <div class="interest-content-box">
+            <span class="interest-tag">aerospace-history / retrocomputing / mechanical-logic</span>
+            <h2 class="interest-heading">3. Space and Retro Tech</h2>
+            <p class="interest-desc">
+                The audacious ingenuity of 20th-century engineering. From the Apollo Guidance Computer (AGC) and core rope memory to Voyager telemetry, early silicon architecture, and vacuum-tube computing.
+            </p>
+            <div class="interest-tags-row">
+                <span class="interest-pill">Apollo Guidance Computer (AGC)</span>
+                <span class="interest-pill">Voyager Program Telemetry</span>
+                <span class="interest-pill">Core Rope Memory</span>
+                <span class="interest-pill">Mainframe Architecture</span>
+                <span class="interest-pill">Mechanical Calculators</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Research -->
+    <section class="subpage-section" id="research">
+        <div class="interest-content-box">
+            <span class="interest-tag">literature-review / whitepapers / technical-deep-dives</span>
+            <h2 class="interest-heading">4. Research</h2>
+            <p class="interest-desc">
+                Investigating systems from first principles. Reading foundational RFCs, systems architecture papers, algorithmic breakthroughs, and technical literature that shape modern software.
+            </p>
+            <div class="interest-tags-row">
+                <span class="interest-pill">Foundational Computing Papers</span>
+                <span class="interest-pill">Original RFC Specifications</span>
+                <span class="interest-pill">Distributed Systems Architecture</span>
+                <span class="interest-pill">First Principles Engineering</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 5: WW 2 Tech -->
+    <section class="subpage-section" id="ww2-tech">
+        <div class="interest-content-box">
+            <span class="interest-tag">signals-intelligence / cryptographic-warfare / wartime-engineering</span>
+            <h2 class="interest-heading">5. WW 2 Tech</h2>
+            <p class="interest-desc">
+                The crucible of modern electronics and computational warfare. Analyzing Enigma mechanics, Bletchley Park Bombe electromechanical decryption, early radar (Cavity Magnetron), and analog mechanical fire-control computers.
+            </p>
+            <div class="interest-tags-row">
+                <span class="interest-pill">Enigma &amp; Lorenz Decryption</span>
+                <span class="interest-pill">Bletchley Park Bombe</span>
+                <span class="interest-pill">Cavity Magnetron &amp; Radar</span>
+                <span class="interest-pill">Analog Fire-Control Computers</span>
+                <span class="interest-pill">Early Signals Intelligence</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 6: Photography (Sticky Scroll Stacking Cards) -->
+    <section class="photography-stack-section" id="photography">
+        <div class="photography-sticky-stage">
+            <!-- Floating Hint Label -->
+            <div class="stack-hint-container">
+                <p class="stack-hint-text">SCROLL TO EXPLORE</p>
+                <span class="stack-hint-line"></span>
+            </div>
+
+            <!-- Sticky Card Track Container -->
+            <div class="stack-cards-container" id="stack-cards-container">
+                <!-- Cards are injected dynamically with title and image -->
+            </div>
+
+            <!-- Snapseed Glassmorphism Badge / Description in Bottom-Left -->
+            <div class="stack-glass-overlay">
+                <div class="snapseed-badge-row">
+                    <span class="snapseed-badge">SNAPSEED TUNED</span>
+                    <span class="snapseed-stat">STACK (5)</span>
+                </div>
+                <h2 class="photography-title">6. Photography</h2>
+                <p class="photography-desc">
+                    Candid frames, mountain passes, and natural light. Edited in Snapseed: fine-tuned curves, atmospheric ambiance, and subtle grain.
+                </p>
+                <div class="snapseed-tools-row">
+                    <span class="snapseed-pill">Ambiance +18</span>
+                    <span class="snapseed-pill">Curves (Film Noir)</span>
+                    <span class="snapseed-pill">Selective Exposure</span>
+                    <span class="snapseed-pill">Film Grain L02</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Touch Feedback Ring for Mobile Long-Press -->
+    <div class="long-press-ring" id="long-press-ring"></div>
+
+    <!-- Three.js Library for 3D WebGL Canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- 3D Spiral Ladder Engine Script with Scroll Locking -->
+    <script>
+        (function() {
+            // 1. Vintage Lectures Collection (8 items)
+            const lectures = [
+                {
+                    title: "Richard Feynman - The Character of Physical Law (1964)",
+                    speaker: "Richard Feynman",
+                    src: "images/lectures/feynman.jpg",
+                    url: "https://www.youtube.com/watch?v=j3mhkYbznBk"
+                },
+                {
+                    title: "Walter Lewin - 8.01 MIT Classical Mechanics",
+                    speaker: "Walter Lewin",
+                    src: "images/lectures/lewin.mp4",
+                    url: "https://www.youtube.com/watch?v=4a0FbQdH3dY"
+                },
+                {
+                    title: "Prof. Eric Grimson - MIT 6.006 Introduction to Algorithms",
+                    speaker: "Prof. Eric Grimson",
+                    src: "images/lectures/eric.mp4",
+                    url: "https://www.youtube.com/watch?v=Pij6J0HsYFA"
+                },
+                {
+                    title: "Prof. Anant Agarwal -  MIT 6.002 Circuits and Electronics, Spring 2007",
+                    speaker: "Prof. Anant Agarwal",
+                    src: "images/lectures/pranantag.png",
+                    url: "https://www.youtube.com/watch?v=gfCc7ZJjHiM"
+                },
+                {
+                    title: "Robert Oppenheimer - Reith Lectures (1953)",
+                    speaker: "J. Robert Oppenheimer",
+                    src: "images/lectures/oppenheimer.jpg",
+                    url: "https://www.youtube.com/watch?v=kYI9cI0-8aM"
+                },
+                {
+                    title: "Alan Turing - Computing Machinery and Intelligence",
+                    speaker: "Alan Turing Archive",
+                    src: "images/lectures/turing.jpg",
+                    url: "https://www.youtube.com/watch?v=d_k8w8R-r3E"
+                },
+                {
+                    title: "John von Neumann - Theory of Self-Reproducing Automata",
+                    speaker: "John von Neumann",
+                    src: "images/lectures/neumann.jpg",
+                    url: "https://www.youtube.com/watch?v=XQZ92E9nI7s"
+                },
+                {
+                    title: "Marvin Minsky - MIT Artificial Intelligence (1968)",
+                    speaker: "Marvin Minsky",
+                    src: "images/lectures/minsky.jpg",
+                    url: "https://www.youtube.com/watch?v=2B1V8Lp2wG0"
+                }
+            ];
+
+            const wrap = document.getElementById('spiral-canvas-wrap');
+            const section = document.getElementById('vintage-lectures');
+            const instructions = document.getElementById('spiral-instructions');
+            if (!wrap || !section || typeof THREE === 'undefined') return;
+
+            // 2. Custom Shaders (Very subtle curve bend = 0.02 to keep images clean & flat)
+            const vertexShader = `
+                uniform float uBend;
+                varying vec2 vUv;
+
+                void main() {
+                    vUv = uv;
+                    vec3 transformed = position;
+                    float curve = 1.0 - cos(position.x * 3.14159265);
+                    transformed.z -= curve * uBend;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(transformed, 1.0);
+                }
+            `;
+
+            const fragmentShader = `
+                uniform sampler2D uTexture;
+                uniform float uImageAspect;
+                uniform float uPlaneAspect;
+                uniform float uBlur;
+                varying vec2 vUv;
+
+                vec2 coverUv(vec2 uv) {
+                    vec2 scale = vec2(1.0);
+                    if (uImageAspect > uPlaneAspect) {
+                        scale.x = uPlaneAspect / uImageAspect;
+                    } else {
+                        scale.y = uImageAspect / uPlaneAspect;
+                    }
+                    return (uv - 0.5) * scale + 0.5;
+                }
+
+                void main() {
+                    vec2 uv = coverUv(vUv);
+                    vec2 stepSize = vec2(0.004) * uBlur;
+                    vec4 color = texture2D(uTexture, uv) * 0.32;
+
+                    color += texture2D(uTexture, uv + vec2(stepSize.x, 0.0)) * 0.12;
+                    color += texture2D(uTexture, uv - vec2(stepSize.x, 0.0)) * 0.12;
+                    color += texture2D(uTexture, uv + vec2(0.0, stepSize.y)) * 0.12;
+                    color += texture2D(uTexture, uv - vec2(0.0, stepSize.y)) * 0.12;
+                    color += texture2D(uTexture, uv + stepSize) * 0.06;
+                    color += texture2D(uTexture, uv - stepSize) * 0.06;
+
+                    float luminance = dot(color.rgb, vec3(0.2126, 0.7152, 0.0722));
+                    color.rgb = mix(vec3(luminance), color.rgb, 1.12);
+                    color.rgb = (color.rgb - 0.5) * 1.05 + 0.5;
+                    float brightness = 1.04 - min(uBlur * 0.015, 0.05);
+                    gl_FragColor = vec4(clamp(color.rgb * brightness, 0.0, 1.0), 1.0);
+                }
+            `;
+
+            // Helper to generate a placeholder canvas texture if an image is missing
+            function createPlaceholderTexture(item) {
+                const canvas = document.createElement('canvas');
+                canvas.width = 3600;
+                canvas.height = 2400;
+                const ctx = canvas.getContext('2d');
+
+                const grad = ctx.createLinearGradient(0, 0, 600, 400);
+                grad.addColorStop(0, '#1a1924');
+                grad.addColorStop(1, '#0b0b10');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, 600, 400);
+
+                ctx.strokeStyle = 'rgba(219, 114, 44, 0.4)';
+                ctx.lineWidth = 4;
+                ctx.strokeRect(20, 20, 560, 360);
+
+                ctx.fillStyle = '#db722c';
+                ctx.font = 'bold 24px monospace';
+                ctx.fillText(item.speaker, 40, 80);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 26px sans-serif';
+                ctx.fillText(item.title.substring(0, 32) + '...', 40, 130);
+
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '16px monospace';
+                ctx.fillText('Click to watch on YouTube', 40, 340);
+
+                return new THREE.CanvasTexture(canvas);
+            }
+
+            // 3. WebGL Scene, Camera & Renderer
+            const scene = new THREE.Scene();
+            const width = wrap.clientWidth || window.innerWidth;
+            const height = wrap.clientHeight || window.innerHeight;
+
+            const camera = new THREE.PerspectiveCamera(44, width / height, 0.1, 100);
+            camera.position.set(0, 0, 10);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            wrap.appendChild(renderer.domElement);
+
+            // 4. Non-overlapping Spacing Geometry
+            const textureLoader = new THREE.TextureLoader();
+            const cardAspectRatio = 3 / 2;
+            const bend = 0.02; // Very slight curve
+
+            // Generous spacing dimensions to prevent overlapping
+            const radius = 3.4;           // Widen the cylinder radius
+            const verticalGap = 1.35;     // Extra vertical separation between cards
+            const angleStep = 0.95;       // Extra angular separation along the curve
+            const planeWidth = 1.85;      // Clean proportional card size
+            const planeHeight = planeWidth / cardAspectRatio;
+
+            const count = lectures.length;
+            const meshes = [];
+            const materials = [];
+
+            lectures.forEach((item, index) => {
+                const geom = new THREE.PlaneGeometry(1, 1, 32, 2);
+                const fallbackTex = createPlaceholderTexture(item);
+
+                const mat = new THREE.ShaderMaterial({
+                    vertexShader: vertexShader,
+                    fragmentShader: fragmentShader,
+                    side: THREE.DoubleSide,
+                    transparent: true,
+                    depthTest: true,
+                    depthWrite: true,
+                    uniforms: {
+                        uTexture: { value: fallbackTex },
+                        uImageAspect: { value: 1.5 },
+                        uPlaneAspect: { value: cardAspectRatio },
+                        uBlur: { value: 0 },
+                        uBend: { value: 0.02 }
+                    }
+                });
+
+                // NEW (Supports both looping videos and images):
+const isVideo = item.src.endsWith('.mp4') || item.src.endsWith('.webm');
+
+if (isVideo) {
+    const video = document.createElement('video');
+    video.src = item.src;
+    video.loop = true;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.preload = 'auto';
+
+    const videoTex = new THREE.VideoTexture(video);
+    videoTex.minFilter = THREE.LinearFilter;
+    videoTex.magFilter = THREE.LinearFilter;
+    mat.uniforms.uTexture.value = videoTex;
+
+    video.addEventListener('loadedmetadata', () => {
+        if (video.videoWidth && video.videoHeight) {
+            mat.uniforms.uImageAspect.value = video.videoWidth / video.videoHeight;
+        }
+    });
+
+    video.load();
+    video.play().catch(() => {
+        const resume = () => { video.play(); };
+        window.addEventListener('scroll', resume, { once: true });
+        window.addEventListener('click', resume, { once: true });
+    });
+} else {
+    textureLoader.load(item.src, (loadedTex) => {
+        loadedTex.minFilter = THREE.LinearFilter;
+        loadedTex.magFilter = THREE.LinearFilter;
+        mat.uniforms.uTexture.value = loadedTex;
+        mat.uniforms.uImageAspect.value = (loadedTex.image.width / loadedTex.image.height) || 1.5;
+    });
+}
+                const mesh = new THREE.Mesh(geom, mat);
+                mesh.userData = { lecture: item, index: index };
+                scene.add(mesh);
+
+                meshes.push(mesh);
+                materials.push(mat);
+            });
+
+            // 5. Scroll Locking (Pinning) Engine
+            let progress = 0;
+            let targetProgress = 0;
+            const smoothing = 0.085;
+
+            function updateScrollProgress() {
+                const rect = section.getBoundingClientRect();
+                const scrolled = -rect.top;
+                const totalScrollable = section.offsetHeight - window.innerHeight;
+
+                if (totalScrollable > 0) {
+                    const ratio = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
+                    // Locks progress strictly between 0 and 7 as user scrolls through the 4800px runway
+                    targetProgress = ratio * (lectures.length - 1);
+
+                    const currentIdx = Math.min(Math.round(targetProgress), lectures.length - 1);
+                    if (instructions) {
+                        if (ratio >= 0.98) {
+                            instructions.innerHTML = `All 8 lectures completed &bull; Scroll down to continue &darr;`;
+                            instructions.style.color = '#db722c';
+                            instructions.style.borderColor = 'rgba(219, 114, 44, 0.5)';
+                        } else {
+                            instructions.innerHTML = `Lecture ${currentIdx + 1} of ${lectures.length}: ${lectures[currentIdx].speaker} &bull; <img src="images/Logo/Logo_of_YouTube_(2013-2015).svg.webp" alt="YouTube" style="width: 16px; height: 11px; vertical-align: middle; margin-right: 4px; display: inline-block;">Click to watch`;
+                            instructions.style.color = '#cbd5e1';
+                            instructions.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        }
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+            updateScrollProgress();
+
+            // 6. Smooth Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                progress += (targetProgress - progress) * smoothing;
+
+                meshes.forEach((mesh, index) => {
+                    const pos = index - progress;
+                    const angle = pos * angleStep;
+                    const depth = (Math.cos(angle) + 1) / 2;
+                    const dist = Math.abs(pos);
+                    const scale = 0.82 + depth * 0.18;
+
+                    mesh.position.set(
+                        Math.sin(angle) * radius,
+                        -pos * verticalGap,
+                        Math.cos(angle) * 2.8
+                    );
+                    mesh.rotation.set(0, Math.sin(angle) * -1.05, 0);
+                    mesh.scale.set(planeWidth * scale, planeHeight * scale, 1);
+
+                    const mat = materials[index];
+                    if (mat.uniforms.uBlur) {
+                        mat.uniforms.uBlur.value = Math.min(dist * 0.7, 1.8);
+                    }
+                    if (mat.uniforms.uBend) {
+                        mat.uniforms.uBend.value = planeWidth * bend;
+                    }
+                });
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // 7. Raycasting for Click (Desktop) & Long-Press (Mobile)
+            const raycaster = new THREE.Raycaster();
+            const mouseVec = new THREE.Vector2();
+
+            function getIntersectedMesh(clientX, clientY) {
+                const rect = renderer.domElement.getBoundingClientRect();
+                mouseVec.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                mouseVec.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+                raycaster.setFromCamera(mouseVec, camera);
+                const intersects = raycaster.intersectObjects(meshes);
+                return intersects.length > 0 ? intersects[0].object : null;
+            }
+
+            // Desktop click
+            let startX = 0, startY = 0;
+            wrap.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                startY = e.clientY;
+            });
+
+            wrap.addEventListener('mouseup', (e) => {
+                const distMoved = Math.hypot(e.clientX - startX, e.clientY - startY);
+                if (distMoved < 6) {
+                    const hit = getIntersectedMesh(e.clientX, e.clientY);
+                    if (hit && hit.userData && hit.userData.lecture) {
+                        window.open(hit.userData.lecture.url, '_blank');
+                    }
+                }
+            });
+
+            // Mobile Long-Press (500ms touch hold opens link)
+            const ring = document.getElementById('long-press-ring');
+            let touchTimer = null;
+            let touchStartX = 0, touchStartY = 0;
+
+            wrap.addEventListener('touchstart', (e) => {
+                if (e.touches.length !== 1) return;
+                const touch = e.touches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+
+                const targetHitMesh = getIntersectedMesh(touch.clientX, touch.clientY);
+
+                if (targetHitMesh && ring) {
+                    ring.style.left = touch.clientX + 'px';
+                    ring.style.top = touch.clientY + 'px';
+                    ring.classList.add('charging');
+
+                    touchTimer = setTimeout(() => {
+                        ring.classList.remove('charging');
+                        if (navigator.vibrate) navigator.vibrate(60);
+
+                        if (targetHitMesh.userData && targetHitMesh.userData.lecture) {
+                            window.open(targetHitMesh.userData.lecture.url, '_blank');
+                        }
+                    }, 500);
+                }
+            }, { passive: true });
+
+            wrap.addEventListener('touchmove', (e) => {
+                if (e.touches.length !== 1) return;
+                const touch = e.touches[0];
+                const distMoved = Math.hypot(touch.clientX - touchStartX, touch.clientY - touchStartY);
+
+                if (distMoved > 10) {
+                    clearTimeout(touchTimer);
+                    if (ring) ring.classList.remove('charging');
+                }
+            }, { passive: true });
+
+            wrap.addEventListener('touchend', () => {
+                clearTimeout(touchTimer);
+                if (ring) ring.classList.remove('charging');
+            });
+
+            // Responsive Resize
+            window.addEventListener('resize', () => {
+                const w = wrap.clientWidth || window.innerWidth;
+                const h = wrap.clientHeight || window.innerHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+                updateScrollProgress();
+            });
+        })();
+    </script>
+
+    <!-- Photography: Sticky Scroll Stacked Cards Engine (Vanilla JS + Pure CSS) -->
+    <script>
+        (function() {
+            // Photography Card Stack Collection
+            // You can replace these image URLs or local file paths (e.g. images/photography/photo1.jpg) at any time!
+            const cardsData = [
+                {
+                    title: "Misty Alps",
+                    src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=85"
+                },
+                {
+                    title: "Sunlit Grove",
+                    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=85"
+                },
+                {
+                    title: "Turquoise Shore",
+                    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85"
+                },
+                {
+                    title: "Mountain Pass",
+                    src: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=1200&q=85"
+                },
+                {
+                    title: "Rolling Hills",
+                    src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=85"
+                }
+            ];
+
+            const TILT_PATTERN = [-1.25, 0.85, -0.65, 1.35, -0.9];
+            const container = document.getElementById('stack-cards-container');
+            const section = document.getElementById('photography');
+            if (!container || !section) return;
+
+            const total = cardsData.length;
+            const cardElements = [];
+
+            // 1. Build Card DOM Nodes
+            cardsData.forEach((item, index) => {
+                const cardSection = document.createElement('div');
+                cardSection.className = 'stack-card-slot';
+                cardSection.style.zIndex = index + 10;
+
+                const figure = document.createElement('figure');
+                figure.className = 'stack-card-figure';
+
+                const tilt = TILT_PATTERN[index % TILT_PATTERN.length];
+                const restingScale = Math.max(0.56, 1 - (total - index - 1) * 0.095);
+                const topOffset = `calc(-5vh + ${160 + index * 22}px)`;
+
+                figure.style.top = topOffset;
+                figure.style.transform = `rotate(${tilt}deg) scale(1)`;
+
+                figure.innerHTML = `
+                    <div class="stack-card-img-wrap">
+                        <img 
+                            src="${item.src}" 
+                            alt="${item.title}" 
+                            class="stack-card-img" 
+                            loading="${index < 2 ? 'eager' : 'lazy'}" 
+                            draggable="false"
+                        />
+                    </div>
+                    <figcaption class="stack-card-caption">
+                        ${item.title}
+                    </figcaption>
+                `;
+
+                cardSection.appendChild(figure);
+                container.appendChild(cardSection);
+
+                cardElements.push({
+                    slot: cardSection,
+                    figure: figure,
+                    index: index,
+                    tilt: tilt,
+                    restingScale: restingScale
+                });
+            });
+
+            // 2. Scroll-Driven Pinning & Layered Stacking Physics
+            // Each card enters sequentially, pins in place at its designated top offset,
+            // while earlier cards progressively scale down to their restingScale and settle underneath.
+            let ticking = false;
+
+            function updateCardPhysics() {
+                ticking = false;
+                const rect = section.getBoundingClientRect();
+                const totalScrollable = section.offsetHeight - window.innerHeight;
+                if (totalScrollable <= 0) return;
+
+                const scrolled = -rect.top;
+                // scrollProgress runs smoothly from 0.0 (entry) to 1.0 (exit)
+                const scrollProgress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
+
+                cardElements.forEach(({ figure, slot, index, tilt, restingScale }) => {
+                    // Start point: when this card begins animating
+                    const start = index / total;
+                    // End point: when the card finishes scaling down
+                    const end = 1;
+
+                    // When scroll is before this card's turn
+                    if (scrollProgress <= start) {
+                        // Card is entering from bottom into view
+                        const entryProgress = Math.max(0, (scrollProgress - (start - 0.2)) / 0.2);
+                        if (index === 0) {
+                            figure.style.transform = `translate3d(0, 0, 0) rotate(${tilt}deg) scale(1)`;
+                            figure.style.opacity = '1';
+                        } else {
+                            const translateY = (1 - entryProgress) * 120;
+                            figure.style.transform = `translate3d(0, ${translateY}px, 0) rotate(${tilt}deg) scale(1)`;
+                            figure.style.opacity = `${entryProgress}`;
+                        }
+                    } else {
+                        // Card has pinned and is scaling down as newer cards stack on top
+                        const scaleProgress = Math.min((scrollProgress - start) / (end - start), 1);
+                        const currentScale = 1 - scaleProgress * (1 - restingScale);
+
+                        figure.style.opacity = '1';
+                        figure.style.transform = `translate3d(0, 0, 0) rotate(${tilt}deg) scale(${currentScale})`;
+                    }
+                });
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateCardPhysics);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateCardPhysics);
+            updateCardPhysics();
+        })();
+    </script>
+
+    <!-- ScrollReveal Interstitial Transition to Journey -->
+    <section class="next-section-transition" id="transition-to-journey" data-target-url="journey.html">
+        <div class="next-section-pin">
+            <span class="next-section-tag">NEXT CHAPTER &bull; CHRONOLOGY</span>
+            <div class="scroll-reveal" data-reveal-text="From Curiosity to Engineering: The Foundations &amp; Journey">
+                <p class="scroll-reveal-text"></p>
+            </div>
+            <div class="next-section-prompt">
+                <div class="transition-progress-bar">
+                    <div class="transition-progress-fill" id="trans-fill"></div>
+                </div>
+                <span class="next-section-hint">Transitioning to My Journey &bull; Please wait</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP & ScrollTrigger Libraries for ScrollReveal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- React-Bits ScrollReveal Transition Engine -->
+    <script>
+        (function() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealContainers = document.querySelectorAll('.scroll-reveal');
+            revealContainers.forEach(container => {
+                const textEl = container.querySelector('.scroll-reveal-text');
+                const rawText = container.getAttribute('data-reveal-text') || textEl.textContent.trim();
+                if (!rawText) return;
+
+                textEl.innerHTML = '';
+                const words = rawText.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.match(/^\s+$/)) {
+                        textEl.appendChild(document.createTextNode(word));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word;
+                        textEl.appendChild(span);
+                    }
+                });
+
+                const section = container.closest('.next-section-transition');
+                const triggerTarget = section || container;
+
+                gsap.fromTo(container, 
+                    { transformOrigin: '0% 50%', rotate: 5 },
+                    {
+                        rotate: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 3. Staggered Word Opacity and Blur
+                const wordSpans = textEl.querySelectorAll('.word');
+                gsap.fromTo(wordSpans,
+                    { opacity: 0, filter: 'blur(10px)', willChange: 'opacity, filter' },
+                    {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 65%',
+                            end: 'bottom 40%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 4. Fully reveal -> Pause so user sees the complete effect -> Smoothly transition to next section
+                const targetUrl = section ? section.getAttribute('data-target-url') : null;
+                const fillBar = section ? section.querySelector('.transition-progress-fill') : null;
+                let timerTriggered = false;
+
+                if (targetUrl) {
+                    ScrollTrigger.create({
+                        trigger: triggerTarget,
+                        start: 'top 20%', // When user has scrolled into full view of the words
+                        onEnter: () => {
+                            if (!timerTriggered) {
+                                timerTriggered = true;
+                                if (fillBar) {
+                                    fillBar.style.transition = 'width 1.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                                    fillBar.style.width = '100%';
+                                }
+                                setTimeout(() => {
+                                    window.location.href = targetUrl;
+                                }, 1700); // 1.7s wait: lets user fully read and appreciate the revealed title
+                            }
+                        },
+                        onLeaveBack: () => {
+                            timerTriggered = false;
+                            if (fillBar) {
+                                fillBar.style.transition = 'none';
+                                fillBar.style.width = '0%';
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

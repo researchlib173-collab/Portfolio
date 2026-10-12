@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with Back Navigation and Section Quick-Nav -->
+    <header class="subpage-nav">
+        <span class="subpage-title">Detailed Skills &amp; Stack</span>
+        <div class="subpage-section-pills">
+            <a href="#skills-languages" class="subpage-pill">1. Languages</a>
+            <a href="#office-skills" class="subpage-pill">2. Office &amp; Design</a>
+            <a href="#search-operators" class="subpage-pill">3. Search Operators</a>
+        </div>
+        <a href="index.html#skills" class="back-btn">&larr; Back to Home</a>
+    </header>
+
+    <!-- Scroll Page 1: AccordionGallery with 3D Tilt, Parallax & GSAP -->
+    <section class="subpage-section skills-accordion-section" id="skills-languages">
+        <div class="skills-accordion-wrapper">
+            <div class="skills-header-block">
+                <span class="office-tag">CORE LANGUAGES &bull; ARCHITECTURE &bull; TOOLING</span>
+                <h2 class="skills-main-title">Technical Proficiency &amp; Languages</h2>
+                <p class="skills-sub-desc">Hover or navigate across the panels to inspect each technical domain.</p>
+            </div>
+
+            <!-- Accordion Gallery Container -->
+            <div 
+                class="accordion-gallery" 
+                id="skills-accordion-gallery"
+                role="list" 
+                aria-label="Image accordion gallery"
+            >
+                <!-- Items populated dynamically by GSAP Accordion Engine -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Page 2: Word & PowerPoint Skills Showcase -->
+    <section class="subpage-section office-skills-section" id="office-skills">
+        <div class="office-container">
+            <!-- Left Side: Typography & Text Content (Tailwind-inspired) -->
+            <div class="office-text-side">
+                <span class="office-tag"> Can't abandon the old tools / DESIGN &amp; VISUALISATION</span>
+                <h2 class="office-hero-title">
+                    MS word, Power Point and draw.io.
+                </h2>
+                <p class="office-description">
+                    Yeah, I know there are other tools, but creativity blooms in constraints especially in <span class="highlight-text">Microsoft Word</span> and <span class="highlight-text">PowerPoint</span>. I did find a lot out of the box, in word and power point can you too? ;)
+                </p>
+                <div class="office-badges">
+                    <span class="badge">Advanced Formatting</span>
+                    <span class="badge">Visual Hierarchy</span>
+                    <span class="badge">Custom Presentations</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Collaged Screenshots Grid -->
+            <div class="office-collage-side">
+                <div class="collage-grid">
+                    <!-- Screenshot Card 1: Word Document Preview -->
+                    <div class="collage-card card-word">
+                        <img src="images/word-sample.jpg" alt="Word Document Showcase" onerror="this.style.display='none'">
+                        <div class="card-caption">Word but not used like word.</div>
+                    </div>
+
+                    <!-- Screenshot Card 2: PowerPoint Slide Preview -->
+                    <div class="collage-card card-ppt-top">
+                        <img src="images/ppt-sample1.jpg" alt="PowerPoint Deck Showcase" onerror="this.style.display='none'">
+                        <div class="card-caption">Power point but sick.</div>
+                    </div>
+
+                    <!-- Screenshot Card 3: PowerPoint Additional Preview -->
+                    <div class="collage-card card-ppt-bottom">
+                        <img src="images/ppt-sample2.jpg" alt="Presentation Visuals" onerror="this.style.display='none'">
+                        <div class="card-caption">Me using draw.io</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Page 3: Google Search Operators Showcase -->
+    <section class="subpage-section office-skills-section search-skills-section" id="search-operators">
+        <div class="office-container">
+            <!-- Left Side: Typography & Text Content -->
+            <div class="office-text-side">
+                <span class="office-tag">Being the Sherlock Holmes in the town of Google.</span>
+                <h2 class="office-hero-title">
+                    Google Search Queries
+                </h2>
+                <p class="office-description">
+                    Cutting through the noise of billions of web pages to find what I want, may be even darker... . I generally use <span class="highlight-text">site:</span>, <span class="highlight-text">filetype:</span>, and <span class="highlight-text">intitle:</span> to pinpoint exact documentation, unindexed files, and precise answers in seconds.
+                </p>
+                <h1 class="office-syntax-specification">Additional queries you can try.. [Click on them]</h1>
+                <div class="office-badges">
+                    <span class="badge">site:</span>
+                    <span class="badge">filetype:pdf</span>
+                    <span class="badge">intitle:</span>
+                    <span class="badge">inurl:</span>
+                    <span class="badge">&quot;exact match&quot;</span>
+                    <span class="badge">-exclude</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Collaged Screenshots Grid -->
+            <div class="office-collage-side">
+                <div class="collage-grid">
+                    <!-- Screenshot Card 1 -->
+                    <div class="collage-card card-search-1">
+                        <img src="images/search-sample1.jpg" alt="Google Search Operator Demo 1" onerror="this.style.display='none'">
+                        <div class="card-caption">site: &amp; filetype: filters</div>
+                    </div>
+
+                    <!-- Screenshot Card 2 -->
+                    <div class="collage-card card-search-2">
+                        <img src="images/search-sample2.jpg" alt="Google Search Operator Demo 2" onerror="this.style.display='none'">
+                        <div class="card-caption">intitle: targeted query</div>
+                    </div>
+
+                    <!-- Screenshot Card 3 -->
+                    <div class="collage-card card-search-3">
+                        <img src="images/search-sample3.jpg" alt="Google Search Operator Demo 3" onerror="this.style.display='none'">
+                        <div class="card-caption">Filtered search results</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ScrollReveal Interstitial Transition to Interests -->
+    <section class="next-section-transition" id="transition-to-interests" data-target-url="interests.html">
+        <div class="next-section-pin">
+            <span class="next-section-tag">NEXT CHAPTER &bull; EXPLORE</span>
+            <div class="scroll-reveal" data-reveal-text="Beyond Code: Mathematics, Vintage Lectures &amp; Space Systems">
+                <p class="scroll-reveal-text"></p>
+            </div>
+            <div class="next-section-prompt">
+                <div class="transition-progress-bar">
+                    <div class="transition-progress-fill" id="trans-fill"></div>
+                </div>
+                <span class="next-section-hint">Transitioning to Interests &amp; Passions &bull; Please wait</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP & ScrollTrigger Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- AccordionGallery Engine (Maintaining Exact Component Props & Logic) -->
+    <script>
+        (function() {
+            // Your exact skill items with preserved image paths and custom skills
+            const items = [
+                {
+                    image: "images/c.jpg",
+                    label: "C Programming",
+                    link: "#",
+                    alt: "C Programming"
+                },
+                {
+                    image: "images/python.jpg",
+                    label: "Python",
+                    link: "#",
+                    alt: "Python"
+                },
+                {
+                    image: "images/java-bg.jpg",
+                    label: "Java",
+                    link: "#",
+                    alt: "Java"
+                },
+                {
+                    image: "https://picsum.photos/id/1039/900/1200",
+                    label: "C++ & Algorithms",
+                    link: "#",
+                    alt: "C++ & Algorithms"
+                },
+                {
+                    image: "https://picsum.photos/id/1043/900/1200",
+                    label: "JavaScript & Web",
+                    link: "#",
+                    alt: "JavaScript & Web"
+                },
+                {
+                    image: "https://picsum.photos/id/1044/900/1200",
+                    label: "Databases & SQL",
+                    link: "#",
+                    alt: "Databases & SQL"
+                },
+                {
+                    image: "https://picsum.photos/id/1018/900/1200",
+                    label: "Git & Linux",
+                    link: "#",
+                    alt: "Git & Linux"
+                }
+            ];
+
+            // Configuration props matching the component
+            const defaultIndex = 1; // Python initially active
+            const accentColor = '#db722c';
+            const overlayColor = '#060010';
+            const textColor = '#ffffff';
+            const height = 480;
+            const gap = 12;
+            const radius = 16;
+            const expandRatio = 0.52;
+            const orientation = 'horizontal';
+            const duration = 0.6;
+            const ease = 'power3.out';
+            const parallax = 0.5;
+            const tilt = 8;
+            const stagger = 0.06;
+            const trigger = 'hover';
+            const showLabels = true;
+            const grayscale = true;
+
+            const root = document.getElementById('skills-accordion-gallery');
+            if (!root) return;
+
+            const vertical = orientation === 'vertical';
+            const count = items.length;
+            let active = Math.min(Math.max(defaultIndex, 0), count - 1);
+            let mediaSize = 320;
+            let tl = null;
+            let firstRun = true;
+
+            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // Set initial CSS variables
+            root.style.setProperty('--ag-accent', accentColor);
+            root.style.setProperty('--ag-overlay', overlayColor);
+            root.style.setProperty('--ag-text', textColor);
+            root.style.setProperty('--ag-gap', `${gap}px`);
+            root.style.setProperty('--ag-radius', `${radius}px`);
+            root.style.height = vertical ? `${Math.round(height * 1.6)}px` : `${height}px`;
+
+            const panelRefs = [];
+            const mediaRefs = [];
+            const barRefs = [];
+            const textRefs = [];
+
+            // Build DOM Nodes
+            items.forEach((item, i) => {
+                const isActive = i === active;
+                const panel = document.createElement(item.link ? 'a' : 'div');
+                panel.className = `ag-panel${isActive ? ' ag-panel--active' : ''}`;
+                panel.style.borderRadius = `${radius}px`;
+                if (item.link) panel.href = item.link;
+                panel.setAttribute('role', 'listitem');
+                panel.tabIndex = 0;
+                panel.setAttribute('aria-label', item.label);
+                if (isActive) panel.setAttribute('aria-current', 'true');
+
+                panel.innerHTML = `
+                    <span class="ag-panel__frame">
+                        <span class="ag-panel__media">
+                            <img src="${item.image}" alt="${item.alt || item.label || ''}" draggable="false" />
+                        </span>
+                        <span class="ag-panel__overlay" aria-hidden="true"></span>
+                    </span>
+                    ${showLabels ? `
+                        <span class="ag-panel__label" aria-hidden="true">
+                            <span class="ag-panel__bar"></span>
+                            <span class="ag-panel__text">${item.label}</span>
+                        </span>
+                    ` : ''}
+                `;
+
+                root.appendChild(panel);
+
+                panelRefs.push(panel);
+                mediaRefs.push(panel.querySelector('.ag-panel__media'));
+                barRefs.push(panel.querySelector('.ag-panel__bar'));
+                textRefs.push(panel.querySelector('.ag-panel__text'));
+
+                // Events
+                panel.addEventListener('mouseenter', () => {
+                    if (trigger === 'hover') setActive(i);
+                });
+
+                panel.addEventListener('click', (e) => {
+                    if (i !== active) {
+                        e.preventDefault();
+                        setActive(i);
+                    }
+                });
+
+                panel.addEventListener('focus', () => setActive(i));
+
+                panel.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        setActive((i + 1) % count);
+                    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        setActive((i - 1 + count) % count);
+                    }
+                });
+            });
+
+            function setActive(newIndex) {
+                if (active === newIndex) return;
+                panelRefs[active]?.classList.remove('ag-panel--active');
+                panelRefs[active]?.removeAttribute('aria-current');
+                active = newIndex;
+                panelRefs[active]?.classList.add('ag-panel--active');
+                panelRefs[active]?.setAttribute('aria-current', 'true');
+                applyLayout(true);
+            }
+
+            function applyLayout(animate) {
+                if (!panelRefs.length) return;
+
+                const r = Math.min(Math.max(expandRatio, 0.2), 0.9);
+                const grow = count > 1 ? (r * (count - 1)) / (1 - r) : 1;
+
+                if (tl) tl.kill();
+                const dur = animate && !prefersReduced ? duration : 0;
+                tl = gsap.timeline();
+
+                panelRefs.forEach((panel, i) => {
+                    if (!panel) return;
+                    const isActive = i === active;
+                    const media = mediaRefs[i];
+                    const bar = barRefs[i];
+                    const text = textRefs[i];
+
+                    const rot = isActive ? 0 : i < active ? tilt : -tilt;
+                    const rotProp = vertical ? { rotateX: -rot } : { rotateY: rot };
+
+                    tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease }, 0);
+
+                    if (media) {
+                        const drift = Math.max(-1.5, Math.min(1.5, active - i));
+                        const shift = drift * parallax * mediaSize * 0.06;
+                        const gray = grayscale ? (isActive ? 0 : 1) : 0;
+                        tl.to(
+                            media,
+                            {
+                                xPercent: -50,
+                                yPercent: -50,
+                                x: vertical ? 0 : isActive ? 0 : shift,
+                                y: vertical ? (isActive ? 0 : shift) : 0,
+                                '--ag-gray': gray,
+                                '--ag-dim': isActive ? 0 : 0.35,
+                                duration: dur,
+                                ease
+                            },
+                            0
+                        );
+                    }
+
+                    if (showLabels && bar && text) {
+                        if (isActive) {
+                            tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
+                        } else {
+                            tl.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
+                        }
+                    }
+                });
+            }
+
+            function measure() {
+                const rect = root.getBoundingClientRect();
+                const total = vertical ? rect.height : rect.width;
+                const usable = Math.max(total - gap * (count - 1), 120);
+                const size = Math.max(140, usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.22);
+                mediaSize = size;
+                root.style.setProperty('--ag-media-size', `${size}px`);
+                applyLayout(!firstRun);
+                firstRun = false;
+            }
+
+            measure();
+            if (window.ResizeObserver) {
+                const ro = new ResizeObserver(measure);
+                ro.observe(root);
+            } else {
+                window.addEventListener('resize', measure);
+            }
+        })();
+    </script>
+
+    <!-- React-Bits ScrollReveal Transition Engine (Vanilla JS + GSAP ScrollTrigger) -->
+    <script>
+        (function() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealContainers = document.querySelectorAll('.scroll-reveal');
+            revealContainers.forEach(container => {
+                const textEl = container.querySelector('.scroll-reveal-text');
+                const rawText = container.getAttribute('data-reveal-text') || textEl.textContent.trim();
+                if (!rawText) return;
+
+                // 1. Split text into spans for per-word animation
+                textEl.innerHTML = '';
+                const words = rawText.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.match(/^\s+$/)) {
+                        textEl.appendChild(document.createTextNode(word));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word;
+                        textEl.appendChild(span);
+                    }
+                });
+
+                const section = container.closest('.next-section-transition');
+                const triggerTarget = section || container;
+
+                // 2. Base Container Rotation
+                gsap.fromTo(container, 
+                    { transformOrigin: '0% 50%', rotate: 5 },
+                    {
+                        rotate: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 3. Staggered Word Opacity and Blur
+                const wordSpans = textEl.querySelectorAll('.word');
+                gsap.fromTo(wordSpans,
+                    { opacity: 0, filter: 'blur(10px)', willChange: 'opacity, filter' },
+                    {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 65%',
+                            end: 'bottom 40%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // 4. Fully reveal -> Pause so user sees the complete effect -> Smoothly transition to next section
+                const targetUrl = section ? section.getAttribute('data-target-url') : null;
+                const fillBar = section ? section.querySelector('.transition-progress-fill') : null;
+                let timerTriggered = false;
+
+                if (targetUrl) {
+                    ScrollTrigger.create({
+                        trigger: triggerTarget,
+                        start: 'top 20%', // When user has scrolled into full view of the words
+                        onEnter: () => {
+                            if (!timerTriggered) {
+                                timerTriggered = true;
+                                if (fillBar) {
+                                    fillBar.style.transition = 'width 1.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                                    fillBar.style.width = '100%';
+                                }
+                                setTimeout(() => {
+                                    window.location.href = targetUrl;
+                                }, 1700); // 1.7s wait: lets user fully read and appreciate the revealed title
+                            }
+                        },
+                        onLeaveBack: () => {
+                            // If user scrolls back up before timeout expires, cancel and reset progress
+                            timerTriggered = false;
+                            if (fillBar) {
+                                fillBar.style.transition = 'none';
+                                fillBar.style.width = '0%';
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

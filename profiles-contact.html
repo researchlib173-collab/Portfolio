@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles &amp; Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="profiles-page-body">
+
+    <!-- Header with Back Navigation and Section Quick-Nav -->
+    <header class="subpage-nav">
+        <span class="subpage-title">Profiles &amp; Contact</span>
+        <div class="subpage-section-pills">
+            <a href="#coding-profiles" class="subpage-pill">1. Coding Profiles</a>
+            <a href="#social-presence" class="subpage-pill">2. Social Presence</a>
+            <a href="#direct-contact" class="subpage-pill">3. Direct Contact</a>
+        </div>
+        <a href="index.html#contact" class="back-btn">&larr; Back to Home</a>
+    </header>
+
+    <!-- Page 1: Coding & Developer Profiles (BounceCards Interactive Stage) -->
+    <section class="subpage-section bounce-profiles-section" id="coding-profiles">
+        <div class="bounce-profiles-wrapper">
+            <!-- Header Block -->
+            <div class="bounce-header-block">
+                <span class="office-tag">DEV PLATFORMS &bull; ALGORITHMS &bull; OPEN SOURCE</span>
+                <h1 class="bounce-main-title">Coding &amp; Developer Profiles</h1>
+                <p class="bounce-sub-desc">
+                    Hover over any profile card to bring it into focus and inspect stats. Click to visit my live profile.
+                </p>
+            </div>
+
+            <!-- React-Bits BounceCards Stage -->
+            <div class="bounce-cards-container" id="bounce-cards-container" style="width: 500px; height: 320px;">
+                <!-- Cards will be dynamically placed and animated by GSAP Bounce Engine -->
+            </div>
+
+            <!-- Focused Profile Details Bar -->
+            <div class="bounce-details-bar" id="bounce-details-bar">
+                <div class="bounce-active-info">
+                    <span class="active-profile-badge" id="active-badge">GITHUB</span>
+                    <h3 class="active-profile-name" id="active-name">GitHub / @username</h3>
+                    <p class="active-profile-desc" id="active-desc">Repositories, open source contributions, and code architecture.</p>
+                </div>
+                <a href="https://github.com" target="_blank" class="abstract-btn active-profile-link" id="active-link">
+                    Open Profile &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Professional & Social Presence (FlowingMenu Interactive Kinetic Ribbons) -->
+    <section class="subpage-section flowing-menu-section" id="social-presence">
+        <div class="flowing-menu-header-block">
+            <span class="office-tag">DIGITAL FOOTPRINT &bull; SOCIAL &bull; COLLABORATION</span>
+            <h2 class="flowing-menu-main-title">Professional &amp; Social Presence</h2>
+            <p class="flowing-menu-sub-desc">
+                Hover into any profile band to trigger direction-aware kinetic ribbon marquees.
+            </p>
+        </div>
+
+        <div class="flowing-menu-container">
+            <div class="menu-wrap" id="flowing-menu-wrap">
+                <nav class="menu" id="flowing-menu-nav">
+                    <!-- Populated dynamically with LinkedIn, Instagram, Pinterest, and GitHub -->
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Get In Touch / Direct Message -->
+    <section class="subpage-section" id="direct-contact">
+        <div class="interest-content-box">
+            <span class="interest-tag">reach-out / collaboration / inquiry</span>
+            <h2 class="interest-heading">Get In Touch</h2>
+            <p class="interest-desc">
+                Whether you have an interesting question, want to collaborate on a system, or just want to chat about retro tech and mathematics, my inbox is open.
+            </p>
+            <div style="margin-top: 25px;">
+                <a href="mailto:your-email@example.com" class="abstract-btn">Send an Email &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- React-Bits BounceCards Animation Engine -->
+    <script>
+        (function() {
+            // Coding Profile Cards Configuration
+            // You can easily update your URLs, logos (local image path or web URL), titles and descriptions here!
+            const profileCards = [
+                {
+                    title: "GitHub",
+                    handle: "GitHub / Developer",
+                    desc: "Open-source projects, system utilities, and repositories.",
+                    url: "https://github.com",
+                    image: "images/Logo/github-logo-transparent-png-11659780101agvzsukgqz.png",
+                    color: "#ffffff",
+                    badge: "OPEN SOURCE"
+                },
+                {
+                    title: "LeetCode",
+                    handle: "LeetCode / Algorithmic Mastery",
+                    desc: "Data structures, graph algorithms, dynamic programming, and contest rating.",
+                    url: "https://leetcode.com/u/hHvZA2O6gn/",
+                    image: "images/Logo/LeetCode_logo.png",
+                    color: "#f59e0b",
+                    badge: "PROBLEM SOLVING"
+                },
+                {
+                    title: "CodeChef",
+                    handle: "CodeChef / Competitive Div",
+                    desc: "Long challenges, Cook-Offs, and rated competitive rounds.",
+                    url: "https://codechef.com",
+                    image: "images/Logo/CodeChef.jpg",
+                    color: "#8b5cf6",
+                    badge: "RATED CONTESTS"
+                },
+                {
+                    title: "Codeforces",
+                    handle: "Codeforces / Competitive Programming",
+                    desc: "Speed arithmetic, division rounds, and mathematical optimizations.",
+                    url: "https://codeforces.com",
+                    image: "images/Logo/CodeForces.webp",
+                    color: "#3b82f6",
+                    badge: "COMPETITIVE"
+                },
+                {
+                    title: "HackerRank",
+                    handle: "HackerRank / Badges & Skills",
+                    desc: "Problem solving stars in C, Python, Java, and SQL databases.",
+                    url: "https://hackerrank.com",
+                    image: "images/Logo/Hacker Rank.png",
+                    color: "#10b981",
+                    badge: "VERIFIED SKILLS"
+                },
+                {
+                    title: "Kaggle",
+                    handle: "Kaggle / Data & ML",
+                    desc: "Exploratory data analysis, mathematical modeling, and notebooks.",
+                    url: "https://kaggle.com",
+                    image: "images/Logo/images.png",
+                    color: "#06b6d4",
+                    badge: "DATA NOTEBOOKS"
+                },
+                {
+                    title: "Project Euler",
+                    handle: "Project Euler / Number Theory",
+                    desc: "Mathematical insights and computational problems solved with elegant algorithms.",
+                    url: "https://projecteuler.net",
+                    image: "images/Logo/project euler.png",
+                    color: "#db722c",
+                    badge: "MATHEMATICS"
+                }
+            ];
+
+            // BounceCards Component Options (from your exact specification)
+            const config = {
+                containerWidth: 500,
+                containerHeight: 320,
+                cardSize: 200,
+                spread: 72,
+                rotation: 8,
+                arc: 0,
+                pushDistance: 160,
+                hoverScale: 1.06,
+                bounciness: 0.6,
+                animationDelay: 0.5,
+                animationStagger: 0.06,
+                borderWidth: 5,
+                borderColor: "#ffffff",
+                radius: 25,
+                shadow: true,
+                enableHover: true
+            };
+
+            const container = document.getElementById('bounce-cards-container');
+            const badgeEl = document.getElementById('active-badge');
+            const nameEl = document.getElementById('active-name');
+            const descEl = document.getElementById('active-desc');
+            const linkEl = document.getElementById('active-link');
+
+            if (!container) return;
+
+            const n = profileCards.length;
+            const mid = (n - 1) / 2;
+            const cardNodes = [];
+            const baseTransforms = [];
+
+            // 1. Generate & Mount Cards
+            profileCards.forEach((item, i) => {
+                const card = document.createElement('a');
+                card.className = 'bounce-card';
+                card.href = item.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                card.setAttribute('data-index', i);
+
+                card.style.width = `${config.cardSize}px`;
+                card.style.height = `${config.cardSize}px`;
+                card.style.borderRadius = `${config.radius}px`;
+                card.style.border = `${config.borderWidth}px solid ${config.borderColor}`;
+                if (config.shadow) {
+                    card.classList.add('has-shadow');
+                }
+
+                // Inner content with image & title overlay
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="bounce-card-img" draggable="false" />
+                    <div class="bounce-card-overlay">
+                        <span class="bounce-card-label">${item.title}</span>
+                    </div>
+                `;
+
+                // Calculate Resting Position:
+                // Spread horizontally around center
+                const baseX = (i - mid) * config.spread;
+                // Rotation fans from -rotation to +rotation
+                const baseRot = mid !== 0 ? ((i - mid) / mid) * config.rotation : 0;
+                // Optional Arc calculation
+                const baseArcY = config.arc !== 0 ? Math.pow(Math.abs(i - mid), 1.5) * config.arc : 0;
+
+                baseTransforms.push({ x: baseX, y: baseArcY, rotation: baseRot, zIndex: i + 1 });
+
+                // Initial position centered off-screen / scaled down for entrance bounce
+                gsap.set(card, {
+                    x: baseX,
+                    y: baseArcY + 60,
+                    rotation: baseRot * 1.5,
+                    scale: 0.2,
+                    opacity: 0,
+                    zIndex: i + 1
+                });
+
+                container.appendChild(card);
+                cardNodes.push(card);
+            });
+
+            // 2. Entrance Bounce Animation (using GSAP elastic ease)
+            // bounciness: 0.6 maps to elastic.out(1, 0.6)
+            const elasticEase = `elastic.out(1, ${Math.max(0.2, 1 - config.bounciness * 0.5)})`;
+
+            cardNodes.forEach((card, i) => {
+                const base = baseTransforms[i];
+                gsap.to(card, {
+                    x: base.x,
+                    y: base.y,
+                    rotation: base.rotation,
+                    scale: 1,
+                    opacity: 1,
+                    duration: 1.1,
+                    delay: config.animationDelay + i * config.animationStagger,
+                    ease: elasticEase
+                });
+            });
+
+            // 3. Interactive Hover & Push Physics
+            let activeIdx = 0;
+
+            function updateDetails(idx) {
+                activeIdx = idx;
+                const p = profileCards[idx];
+                if (badgeEl) badgeEl.innerText = p.badge;
+                if (nameEl) nameEl.innerText = p.handle;
+                if (descEl) descEl.innerText = p.desc;
+                if (linkEl) {
+                    linkEl.href = p.url;
+                    linkEl.innerText = `Open ${p.title} \u2192`;
+                }
+            }
+
+            if (config.enableHover) {
+                cardNodes.forEach((hoveredCard, hoveredIdx) => {
+                    hoveredCard.addEventListener('mouseenter', () => {
+                        updateDetails(hoveredIdx);
+
+                        cardNodes.forEach((card, i) => {
+                            const base = baseTransforms[i];
+
+                            if (i === hoveredIdx) {
+                                // Hovered card: scales up, straightens to 0deg, jumps to highest z-index
+                                gsap.to(card, {
+                                    x: base.x,
+                                    y: base.y - 12,
+                                    rotation: 0,
+                                    scale: config.hoverScale,
+                                    zIndex: 50,
+                                    duration: 0.45,
+                                    ease: "power3.out"
+                                });
+                            } else {
+                                // Other cards: pushed away from hovered card by pushDistance
+                                const direction = i < hoveredIdx ? -1 : 1;
+                                const push = direction * config.pushDistance * 0.35;
+
+                                gsap.to(card, {
+                                    x: base.x + push,
+                                    y: base.y,
+                                    rotation: base.rotation * 1.2,
+                                    scale: 0.94,
+                                    zIndex: base.zIndex,
+                                    duration: 0.45,
+                                    ease: "power3.out"
+                                });
+                            }
+                        });
+                    });
+
+                    hoveredCard.addEventListener('mouseleave', () => {
+                        // Restore all cards to their initial fan positions
+                        cardNodes.forEach((card, i) => {
+                            const base = baseTransforms[i];
+                            gsap.to(card, {
+                                x: base.x,
+                                y: base.y,
+                                rotation: base.rotation,
+                                scale: 1,
+                                zIndex: base.zIndex,
+                                duration: 0.5,
+                                ease: "power3.out"
+                            });
+                        });
+                    });
+                });
+            }
+
+            // Initialize default active details with first profile
+            updateDetails(0);
+        })();
+    </script>
+
+    <!-- FlowingMenu Engine (Direction-Aware Kinetic Ribbons) -->
+    <script>
+        (function() {
+            const menuItems = [
+                {
+                    text: "GitHub / Open Source Code Repos",
+                    link: "https://github.com",
+                    image: "images/Logo/github-logo-transparent-png-11659780101agvzsukgqz.png",
+                    iconColor: "#ffffff"
+                },
+                {
+                    text: "LeetCode / Algorithmic Problem Solving",
+                    link: "https://leetcode.com/u/hHvZA2O6gn/",
+                    image: "images/Logo/LeetCode_logo.png",
+                    iconColor: "#f59e0b"
+                },
+                {
+                    text: "Instagram / Visual Stories & Frames",
+                    link: "https://instagram.com",
+                    image: "images/Logo/Instagram-logo.webp",
+                    iconColor: "#e1306c"
+                },
+                {
+                    text: "YouTube / Tech & Knowledge Archiving",
+                    link: "https://youtube.com",
+                    image: "images/Logo/Logo_of_YouTube_(2013-2015).svg.webp",
+                    iconColor: "#ff0000"
+                },
+                {
+                    text: "Pinterest / Aesthetic Boards & Retro Tech",
+                    link: "https://pinterest.com",
+                    image: "images/Logo/pinterest.png",
+                    iconColor: "#e60023"
+                }
+            ];
+
+            const speed = 15;
+            const textColor = '#ffffff';
+            const marqueeBgColor = '#db722c'; // Accent orange marquee ribbon
+            const marqueeTextColor = '#000000'; // High-contrast black text on accent
+            const borderColor = 'rgba(255, 255, 255, 0.12)';
+            const animationDefaults = { duration: 0.6, ease: 'expo' };
+
+            const menuNav = document.getElementById('flowing-menu-nav');
+            if (!menuNav) return;
+
+            function distMetric(x, y, x2, y2) {
+                const xDiff = x - x2;
+                const yDiff = y - y2;
+                return xDiff * xDiff + yDiff * yDiff;
+            }
+
+            function findClosestEdge(mouseX, mouseY, width, height) {
+                const topEdgeDist = distMetric(mouseX, mouseY, width / 2, 0);
+                const bottomEdgeDist = distMetric(mouseX, mouseY, width / 2, height);
+                return topEdgeDist < bottomEdgeDist ? 'top' : 'bottom';
+            }
+
+            menuItems.forEach((item) => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu__item';
+                menuItem.style.borderColor = borderColor;
+
+                const link = document.createElement('a');
+                link.className = 'menu__item-link';
+                link.href = item.link;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.style.color = textColor;
+                link.innerText = item.text;
+
+                const marquee = document.createElement('div');
+                marquee.className = 'marquee';
+                marquee.style.backgroundColor = marqueeBgColor;
+
+                const marqueeInnerWrap = document.createElement('div');
+                marqueeInnerWrap.className = 'marquee__inner-wrap';
+
+                const marqueeInner = document.createElement('div');
+                marqueeInner.className = 'marquee__inner';
+                marqueeInner.setAttribute('aria-hidden', 'true');
+
+                // Determine repetitions (min 4 copies for seamless loop)
+                const repetitions = 6;
+                for (let idx = 0; idx < repetitions; idx++) {
+                    const part = document.createElement('div');
+                    part.className = 'marquee__part';
+                    part.style.color = marqueeTextColor;
+
+                    const span = document.createElement('span');
+                    span.innerText = item.text;
+
+                    const img = document.createElement('div');
+                    img.className = 'marquee__img';
+                    img.style.backgroundImage = `url(${item.image})`;
+
+                    part.appendChild(span);
+                    part.appendChild(img);
+                    marqueeInner.appendChild(part);
+                }
+
+                marqueeInnerWrap.appendChild(marqueeInner);
+                marquee.appendChild(marqueeInnerWrap);
+                menuItem.appendChild(link);
+                menuItem.appendChild(marquee);
+                menuNav.appendChild(menuItem);
+
+                // Setup infinite seamless GSAP marquee loop
+                let marqueeAnim = null;
+
+                function setupMarqueeAnimation() {
+                    const firstPart = marqueeInner.querySelector('.marquee__part');
+                    if (!firstPart) return;
+                    const contentWidth = firstPart.offsetWidth;
+                    if (contentWidth === 0) return;
+
+                    if (marqueeAnim) marqueeAnim.kill();
+
+                    marqueeAnim = gsap.to(marqueeInner, {
+                        x: -contentWidth,
+                        duration: speed,
+                        ease: 'none',
+                        repeat: -1
+                    });
+                }
+
+                setTimeout(setupMarqueeAnimation, 100);
+                window.addEventListener('resize', setupMarqueeAnimation);
+
+                // Direction-aware entrance and exit
+                link.addEventListener('mouseenter', (ev) => {
+                    const rect = menuItem.getBoundingClientRect();
+                    const x = ev.clientX - rect.left;
+                    const y = ev.clientY - rect.top;
+                    const edge = findClosestEdge(x, y, rect.width, rect.height);
+
+                    gsap.timeline({ defaults: animationDefaults })
+                        .set(marquee, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+                        .set(marqueeInner, { y: edge === 'top' ? '101%' : '-101%' }, 0)
+                        .to([marquee, marqueeInner], { y: '0%' }, 0);
+                });
+
+                link.addEventListener('mouseleave', (ev) => {
+                    const rect = menuItem.getBoundingClientRect();
+                    const x = ev.clientX - rect.left;
+                    const y = ev.clientY - rect.top;
+                    const edge = findClosestEdge(x, y, rect.width, rect.height);
+
+                    gsap.timeline({ defaults: animationDefaults })
+                        .to(marquee, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+                        .to(marqueeInner, { y: edge === 'top' ? '101%' : '-101%' }, 0);
+                });
+            });
+        })();
+    </script>
+
+    <!-- ScrollReveal Interstitial Transition to Home -->
+    <section class="next-section-transition" id="transition-to-home" data-target-url="index.html#about">
+        <div class="next-section-pin">
+            <span class="next-section-tag">FULL CIRCLE &bull; LANDING</span>
+            <div class="scroll-reveal" data-reveal-text="Back to the Beginning: Welcome to My World">
+                <p class="scroll-reveal-text"></p>
+            </div>
+            <div class="next-section-prompt">
+                <div class="transition-progress-bar">
+                    <div class="transition-progress-fill" id="trans-fill"></div>
+                </div>
+                <span class="next-section-hint">Returning to Main Portfolio &bull; Please wait</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ScrollTrigger Library for ScrollReveal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- React-Bits ScrollReveal Transition Engine -->
+    <script>
+        (function() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealContainers = document.querySelectorAll('.scroll-reveal');
+            revealContainers.forEach(container => {
+                const textEl = container.querySelector('.scroll-reveal-text');
+                const rawText = container.getAttribute('data-reveal-text') || textEl.textContent.trim();
+                if (!rawText) return;
+
+                textEl.innerHTML = '';
+                const words = rawText.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.match(/^\s+$/)) {
+                        textEl.appendChild(document.createTextNode(word));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word;
+                        textEl.appendChild(span);
+                    }
+                });
+
+                const section = container.closest('.next-section-transition');
+                const triggerTarget = section || container;
+
+                gsap.fromTo(container, 
+                    { transformOrigin: '0% 50%', rotate: 5 },
+                    {
+                        rotate: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                const wordSpans = textEl.querySelectorAll('.word');
+                gsap.fromTo(wordSpans,
+                    { opacity: 0, filter: 'blur(10px)', willChange: 'opacity, filter' },
+                    {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: triggerTarget,
+                            start: 'top 65%',
+                            end: 'bottom 40%',
+                            scrub: true
+                        }
+                    }
+                );
+
+                // Fully reveal -> Pause so user sees the complete effect -> Smoothly transition to next section
+                const targetUrl = section ? section.getAttribute('data-target-url') : null;
+                const fillBar = section ? section.querySelector('.transition-progress-fill') : null;
+                let timerTriggered = false;
+
+                if (targetUrl) {
+                    ScrollTrigger.create({
+                        trigger: triggerTarget,
+                        start: 'top 20%', // When user has scrolled into full view of the words
+                        onEnter: () => {
+                            if (!timerTriggered) {
+                                timerTriggered = true;
+                                if (fillBar) {
+                                    fillBar.style.transition = 'width 1.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                                    fillBar.style.width = '100%';
+                                }
+                                setTimeout(() => {
+                                    window.location.href = targetUrl;
+                                }, 1700); // 1.7s wait: lets user fully read and appreciate the revealed title
+                            }
+                        },
+                        onLeaveBack: () => {
+                            // If user scrolls back up before timeout expires, cancel and reset progress
+                            timerTriggered = false;
+                            if (fillBar) {
+                                fillBar.style.transition = 'none';
+                                fillBar.style.width = '0%';
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>
