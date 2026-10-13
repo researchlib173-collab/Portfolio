@@ -41,6 +41,7 @@
 }
 
 .about-content-direct {
+    font-family: 'Heal The Web A', sans-serif;
     max-width: 780px;
     width: 100%;
     /* NO GLASSMORPHISM: 100% transparent, directly on the background image */
