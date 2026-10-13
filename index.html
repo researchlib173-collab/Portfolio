@@ -1889,26 +1889,48 @@
 
             const paintStrap = (canvas, image, color) => {
                 const across = 192;
-                const along = image ? Math.max(64, Math.round((image.width / image.height) * across)) : across * 2;
+                if (!image) {
+                    const along = across * 2;
+                    canvas.width = across;
+                    canvas.height = along;
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) return along / across;
+                    ctx.fillStyle = toCss(color);
+                    ctx.fillRect(0, 0, across, along);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+                    for (let y = 0; y < along; y += 6) {
+                        ctx.fillRect(10, y, across - 20, 2);
+                    }
+                    return along / across;
+                }
+
+                // If image is already vertical (height >= width), draw it directly along the strap!
+                // Only rotate by 90 deg if the source graphic is horizontal (width > height)
+                const isVertical = image.height >= image.width;
+                const along = isVertical
+                    ? Math.max(64, Math.round((image.height / image.width) * across))
+                    : Math.max(64, Math.round((image.width / image.height) * across));
+
                 canvas.width = across;
                 canvas.height = along;
                 const ctx = canvas.getContext('2d');
                 if (!ctx) return along / across;
+
                 ctx.fillStyle = toCss(color);
                 ctx.fillRect(0, 0, across, along);
-                if (image) {
+
+                if (isVertical) {
+                    // Direct vertical orientation along ribbon length (no sideways rotation)
+                    ctx.drawImage(image, 0, 0, across, along);
+                } else {
+                    // Rotate horizontal graphic 90 degrees so it runs along the strap
                     ctx.save();
                     ctx.translate(across, 0);
                     ctx.rotate(Math.PI / 2);
                     ctx.drawImage(image, 0, 0, along, across);
                     ctx.restore();
-                    return along / across;
                 }
-                // High-visibility textile stitch pattern
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-                for (let y = 0; y < along; y += 6) {
-                    ctx.fillRect(10, y, across - 20, 2);
-                }
+
                 return along / across;
             };
 
