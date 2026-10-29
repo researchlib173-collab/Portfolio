@@ -1,4 +1,12 @@
 @font-face {
+    font-family: 'Bernard MT Condensed';
+    src: url('BERNHC.TTF') format('truetype');
+}
+@font-face {
+    font-family: 'Bernard Sans';
+    src: url('BERNHC.TTF') format('truetype');
+}
+@font-face {
     font-family: 'Heal The Web A';  /* 1. Give your font whatever nickname you want */
     src: url('HealTheWebA-Regular.otf'); /* 2. The exact name of your downloaded font file */
     
@@ -31,39 +39,42 @@
 /* About Me Content Placed Directly on Background Image */
 .about-hero-section {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* PADDING OF SECTION OVER THE BG IMAGE: Adjust top/bottom & left/right edge distance */
-    padding: 100px 50px 100px 0px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding: 80px 40px 80px 60px !important;
     box-sizing: border-box;
-    text-align: left;
+    text-align: left !important;
 }
 
 .about-content-direct {
-    font-family: 'Heal The Web A', sans-serif;
-    max-width: 780px;
+    font-family: 'Bernard MT Condensed', 'Bernard Sans', sans-serif;
+    max-width: 580px;
     width: 100%;
-    /* NO GLASSMORPHISM: 100% transparent, directly on the background image */
+    margin-left: 0 !important;
+    margin-right: auto !important;
     background: transparent;
     border: none;
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     padding: 0;
-    text-align: left;
+    text-align: left !important;
 }
 
 .about-title {
-    font-family: 'Mono Regular', sans-serif;
-    font-size: clamp(2.4rem, 4.2vw, 3.4rem);
-    font-weight: 800;
+    font-family: 'Niagara Solid', 'Bernard Sans', sans-serif;
+    font-size: clamp(  10rem, 6.8vw, 7.2rem);
+    font-weight: 450;
+    line-height: 0.95;
+    text-transform: uppercase;
     color: #ffffff;
-    /* SPACING BELOW TITLE: Distance to subquote */
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.85);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.349), 0 2px 6px rgba(0, 0, 0, 0.316);
     text-align: left;
+    max-width: 100%;
 }
 
 .about-subquote {
