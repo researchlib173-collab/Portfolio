@@ -2361,7 +2361,7 @@
 
                     const anchorX = ((ANCHORS[config.anchor] ?? 0.5) - 0.5) * viewWidth;
                     const anchorY = viewHeight / 2 - 0.15;
-                    const cardTop = anchorY - mix(0.7, 1.25, clamp(config.strapLength, 0, 1));
+                    const cardTop = anchorY - mix(0.7, 2.0, clamp(config.strapLength, 0, 1));
                     const hangTop = cardTop + (layout.hangY - layout.height / 2);
                     sim.anchor.set(anchorX, anchorY, 0);
                     configureSimulation(sim, layout, Math.max(0.5, anchorY - hangTop));
@@ -2748,11 +2748,11 @@
                     cardColor: '#ffffff',
                     strapColor: '#6e183c',
                     orientation: 'portrait',
-                    cornerRadius: 0.3,
+                    cornerRadius: 0.05,
                     size: 0.6,
                     anchor: 'center',
-                    strapLength: 0.5,
-                    strapWidth: 0.65,
+                    strapLength: 2.0,
+                    strapWidth: 0.8,
                     metal: 'silver',
                     gravity: 1.1,
                     damping: 0.65,
